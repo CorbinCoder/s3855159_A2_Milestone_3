@@ -1,5 +1,6 @@
 #include "LinkedList.h"
 #include "GetInput.h"
+#include "FileHandler.h"
 
 #include <iostream>
 #include <string>
@@ -44,7 +45,7 @@ void printMenu()
         createNewGame();
         break;
     case 2:
-        break;
+        FileHandler::loadGame();
     case 3:
         break;
     case 4:
