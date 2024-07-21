@@ -7,7 +7,6 @@ std::string getInput(bool (*validateFunc)(std::string &))
 {
     bool isValidInput = false; // false initalially to keep the loop runs at least once
     std::string resultString;  // Convert this variable to integer after validation
-    
 
     while (!isValidInput)
     {
@@ -35,11 +34,12 @@ std::string getInput(bool (*validateFunc)(std::string &))
     return resultString;
 }
 
-
 // Function to check if user input is integer
-bool isInteger(std::string &s) {
+bool isInteger(std::string &s)
+{
     std::string::iterator it = s.begin();
-    while (it != s.end() && std::isdigit(*it)) ++it;
+    while (it != s.end() && std::isdigit(*it))
+        ++it;
     return !s.empty() && it == s.end();
 }
 
@@ -58,8 +58,17 @@ bool validateUserChoice(std::string &userChoiceString)
     return false;
 }
 
+// Validate upperecase letters. NO spaces, numbers and special charachters.
 bool validateName(std::string &nameString)
 {
-    // TODO: Validate upperecase letters. NO spaces, numbers and special charachters.
+    // For every character in the nameString
+    for (char c : nameString)
+    {
+        if (!(c >= 'A' && c <= 'Z')) // Check if the character is not an uppercase letter, which isn't between 'A' and 'Z'
+        {
+            return false;
+        }
+    }
+
     return true;
 }
