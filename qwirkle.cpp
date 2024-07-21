@@ -2,7 +2,7 @@
 #include "GetInput.h"
 
 #include <iostream>
-#include <string>  
+#include <string>
 
 #define EXIT_SUCCESS 0
 
@@ -12,60 +12,60 @@ void createNewGame();
 
 int main(void)
 {
-   LinkedList *list = new LinkedList();
-   delete list;
+    LinkedList *list = new LinkedList();
+    delete list;
 
-   printWelcomeMessage();
-   printMenu();
+    printWelcomeMessage();
+    printMenu();
 
-   return EXIT_SUCCESS;
+    return EXIT_SUCCESS;
 }
 
 void printWelcomeMessage()
 {
-   std::cout << "Welcome to Qwirkle!" << std::endl;
-   std::cout << "-------------------" << std::endl;
+    std::cout << "Welcome to Qwirkle!" << std::endl;
+    std::cout << "-------------------" << std::endl;
 }
 
 void printMenu()
 {
-   std::cout << "Menu" << std::endl;
-   std::cout << "----" << std::endl;
-   std::cout << "1. New Game" << std::endl;
-   std::cout << "2. Load Game" << std::endl;
-   std::cout << "3. Credits" << std::endl;
-   std::cout << "4. Quit" << std::endl;
+    std::cout << "Menu" << std::endl;
+    std::cout << "----" << std::endl;
+    std::cout << "1. New Game" << std::endl;
+    std::cout << "2. Load Game" << std::endl;
+    std::cout << "3. Credits" << std::endl;
+    std::cout << "4. Quit" << std::endl;
 
-   std::string userChoiceString = getInput(validateUserChoice);
-   int userChoiceInteger = std::stoi(userChoiceString);
-   switch (userChoiceInteger)
-   {
-   case 1:
-      createNewGame();
-      break;
-   case 2:
-      break;
-   case 3:
-      break;
-   case 4:
-      std::cout << "Goodbye" << std::endl;
-      break;
-   }
+    std::string userChoiceString = GetInput::getInput(GetInput::validateUserChoice);
+    int userChoiceInteger = std::stoi(userChoiceString);
+    switch (userChoiceInteger)
+    {
+    case 1:
+        createNewGame();
+        break;
+    case 2:
+        break;
+    case 3:
+        break;
+    case 4:
+        std::cout << "Goodbye" << std::endl;
+        break;
+    }
 }
 
 void createNewGame()
 {
-   std::cout << std::endl
-             << "Starting a New Game" << std::endl;
-   std::cout << std::endl
-             << "Enter a name for player 1 (uppercase characters only)" << std::endl;
-   std::string player1 = getInput(validateName);
-   std::cout << std::endl
-             << "Enter a name for player 2 (uppercase characters only)" << std::endl;
-   std::string player2 = getInput(validateName);
+    std::cout << std::endl
+              << "Starting a New Game" << std::endl;
+    std::cout << std::endl
+              << "Enter a name for player 1 (uppercase characters only)" << std::endl;
+    std::string player1 = GetInput::getInput(GetInput::validateName);
+    std::cout << std::endl
+              << "Enter a name for player 2 (uppercase characters only)" << std::endl;
+    std::string player2 = GetInput::getInput(GetInput::validateName);
 
-   std::cout << std::endl
-             << "Let's Play!" << std::endl;
+    std::cout << std::endl
+              << "Let's Play!" << std::endl;
 }
 
 // TODO:

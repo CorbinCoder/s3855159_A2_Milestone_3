@@ -3,7 +3,7 @@
 // Pass function into a function -> able to call a function inside a function
 // Syntax: <return type> (*<function name>)(<parameters' types>)
 //         bool          (*validateFunc)   (std::string &, int, bool)
-std::string getInput(bool (*validateFunc)(std::string &))
+std::string GetInput::getInput(bool (*validateFunc)(std::string &))
 {
     bool isValidInput = false; // false initalially to keep the loop runs at least once
     std::string resultString;  // Convert this variable to integer after validation
@@ -35,7 +35,7 @@ std::string getInput(bool (*validateFunc)(std::string &))
 }
 
 // Function to check if user input is integer
-bool isInteger(std::string &s)
+bool GetInput::isInteger(std::string &s)
 {
     std::string::iterator it = s.begin();
     while (it != s.end() && std::isdigit(*it))
@@ -43,10 +43,10 @@ bool isInteger(std::string &s)
     return !s.empty() && it == s.end();
 }
 
-bool validateUserChoice(std::string &userChoiceString)
+bool GetInput::validateUserChoice(std::string &userChoiceString)
 {
     // Validate if the userChoiceString displays an integer
-    if (isInteger(userChoiceString))
+    if (GetInput::isInteger(userChoiceString))
     {
         int userChoiceInteger = std::stoi(userChoiceString);
         if (userChoiceInteger >= 1 && userChoiceInteger <= 4)
@@ -59,7 +59,7 @@ bool validateUserChoice(std::string &userChoiceString)
 }
 
 // Validate upperecase letters. NO spaces, numbers and special charachters.
-bool validateName(std::string &nameString)
+bool GetInput::validateName(std::string &nameString)
 {
     // For every character in the nameString
     for (char c : nameString)
