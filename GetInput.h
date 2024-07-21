@@ -5,9 +5,15 @@
 #include <iostream>
 #include <string>
 
-std::string getInput(bool (*validateFunc)(std::string &));
-bool isInteger(std::string &s);
-bool validateUserChoice(std::string &userChoiceString);
-bool validateName(std::string &nameString);
+class GetInput
+{
+public:
+    static std::string getInput(bool (*validateFunc)(std::string &));
+    static bool validateUserChoice(std::string &userChoiceString);
+    static bool validateName(std::string &nameString);
+
+private:
+    static bool isInteger(std::string &s);
+};
 
 #endif // ASSIGN2_GETINPUT_H
