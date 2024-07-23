@@ -17,7 +17,7 @@ public:
    // constructor
    Tile(Colour colour, Shape shape);
 
-   // Deconstructor
+   // Destructor
    ~Tile();
 
    // Copy Constructor

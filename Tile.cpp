@@ -6,7 +6,7 @@ Tile::Tile(Colour colour, Shape shape)
     this->shape = shape;
 }
 
-// deconstuctor
+// destructor
 Tile::~Tile()
 {
 }
@@ -14,11 +14,15 @@ Tile::~Tile()
 // Copy Constructor
 Tile::Tile(Tile &other)
 {
+    colour = other.colour;
+    shape = other.shape;
 }
 
 // Move Constructor
 Tile::Tile(Tile &&other)
 {
+    colour = other.colour;
+    shape = other.shape;
 }
 
 Colour Tile::getColour()
