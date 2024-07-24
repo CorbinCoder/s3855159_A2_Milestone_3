@@ -1,11 +1,8 @@
-
-#include <string>
 #include "PLayer.h";
 #include "LinkedList.h";
-using std::string;
 
 // constructor
-Player::Player(string name, LinkedList hand, int score, int position)
+Player::Player(std::string name, LinkedList hand, int score, int position)
 {
     this->name = name;
     this->hand = hand;
@@ -16,7 +13,7 @@ Player::Player(string name, LinkedList hand, int score, int position)
 // Destructor
 Player::~Player()
 {
-    delete[] &this->hand;
+    // delete[] &this->hand; // this->hand is a class instance of LinkedList, not a pointer
 }
 
 // Copy Constructor
@@ -63,7 +60,7 @@ void Player::createHand()
 }
 
 // getters and setters
-string Player::getName()
+std::string Player::getName()
 {
     return this->name;
 }

@@ -1,4 +1,3 @@
-
 #ifndef ASSIGN2_TILE_H
 #define ASSIGN2_TILE_H
 
@@ -10,10 +9,11 @@ typedef int Shape;
 
 class Tile
 {
-public:
+private:
    Colour colour;
    Shape shape;
 
+public:
    // constructor
    Tile(Colour colour, Shape shape);
 
