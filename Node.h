@@ -5,31 +5,29 @@
 #include "Tile.h"
 #include "TileCodes.h"
 
-class Node {
+class Node
+{
 public:
-
    // Constructors
    Node();
-   Node(Tile* tile, Node* next);
-   Node(Node& other);
+   Node(Tile *tile, Node *next);
+   Node(Node &other);
    ~Node();
 
    // Methods
    bool checkNextMatch();
 
    // Get/Set
-   Tile* getTile();
-   void setTile(Tile* tile);
+   Tile *getTile();
+   void setTile(Tile *tile);
 
-   Node* getNext();
-   void setNext(Node* next);
+   Node *getNext();
+   void setNext(Node *next);
 
 private:
-
    // Member vars
-   Tile*    tile;
-   Node*    next;
-
+   Tile *tile;
+   Node *next;
 };
 
 #endif // ASSIGN2_NODE_H
