@@ -5,21 +5,24 @@
 #include <iostream>
 #include "Node.h"
 
-class LinkedList {
+class LinkedList
+{
 public:
-
    LinkedList();
    ~LinkedList();
 
    int getLength();
-   void addEnd(Tile* tile);
-   void removeEnd();
-   void addFront(Tile* tile);
-   void removeFront();
+   void clear();
+   int get(int i);
+
+   void addFront(Tile *tile);
+   void addBack(Tile *tile);
+   void deleteBack();
+   void deleteFront();
 
 private:
-   Node* head;
-   Node* tail;
+   Node *head;
+   Node *tail;
    int length;
 };
 

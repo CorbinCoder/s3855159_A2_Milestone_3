@@ -1,24 +1,25 @@
 
 #include "LinkedList.h"
 
-//Constructors
-LinkedList::LinkedList() {
+// Constructors
+LinkedList::LinkedList()
+{
    head = nullptr;
    tail = nullptr;
 
    // TODO
 }
 
-LinkedList::~LinkedList() 
+LinkedList::~LinkedList()
 {
    delete head;
    delete tail;
 }
 
 // Methods
-void LinkedList::addFront(Tile* tile)
+void LinkedList::addFront(Tile *tile)
 {
-   Node* temp = new Node();
+   Node *temp = new Node();
    temp->setTile(tile);
    temp->setNext(nullptr);
 
@@ -36,7 +37,7 @@ void LinkedList::addFront(Tile* tile)
    }
 }
 
-void LinkedList::removeFront()
+void LinkedList::deleteFront()
 {
    if (head = nullptr)
    {
@@ -51,15 +52,15 @@ void LinkedList::removeFront()
    }
    else
    {
-      Node* temp = head;
+      Node *temp = head;
       head = head->getNext();
       delete temp;
    }
 }
 
-void LinkedList::addEnd(Tile* tile)
+void LinkedList::addBack(Tile *tile)
 {
-   Node* temp = new Node();
+   Node *temp = new Node();
    temp->setTile(tile);
    temp->setNext(nullptr);
 
@@ -77,7 +78,7 @@ void LinkedList::addEnd(Tile* tile)
    }
 }
 
-void LinkedList::removeEnd()
+void LinkedList::deleteBack()
 {
    if (head == nullptr)
    {
@@ -85,9 +86,9 @@ void LinkedList::removeEnd()
    }
    else
    {
-      Node* temp = head;
+      Node *temp = head;
 
-      while (temp->getNext() != tail) 
+      while (temp->getNext() != tail)
       {
          temp = temp->getNext();
       }
