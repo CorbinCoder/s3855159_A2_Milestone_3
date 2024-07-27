@@ -5,31 +5,32 @@ Node::Node()
 {
 }
 
-// regular constructor
+// Regular constructor
 Node::Node(Tile *tile, Node *next)
 {
    this->tile = tile;
    this->next = next;
 }
 
-// copy constructor
+// Copy constructor
 Node::Node(Node &other)
 {
    this->tile = other.tile;
    this->next = other.next;
 }
 
-// deconstructor
+// Destructor
 Node::~Node()
 {
    delete this->tile;
    delete this->next;
 }
 
-// checks whether the next node matches either in colour of shape
+// Checks if the next node tile matches colour or shape
 bool Node::checkNextMatch()
 {
-   if (this->tile->getColour() == next->getTile()->getColour() || this->tile->getShape() == next->getTile()->getShape())
+   if (this->tile->getColour() == next->getTile()->getColour() 
+      || this->tile->getShape() == next->getTile()->getShape())
    {
       return true;
    }
