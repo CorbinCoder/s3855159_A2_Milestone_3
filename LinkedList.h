@@ -9,7 +9,7 @@ class LinkedList
 {
    public:
 
-   // Contructo(s)/Destructor
+   // Contructor(s)/Destructor
    LinkedList();
    ~LinkedList();
 

@@ -26,7 +26,7 @@ Node::~Node()
    delete this->next;
 }
 
-// Checks if the next node tile matches colour or shape
+// Return true if next node tile matches colour or shape
 bool Node::checkNextMatch()
 {
    if (this->tile->getColour() == next->getTile()->getColour() 
