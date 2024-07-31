@@ -1,7 +1,7 @@
 
 #include "LinkedList.h"
 
-// Constructors
+// Default Constructor
 LinkedList::LinkedList()
 {
    head = nullptr;
@@ -10,13 +10,14 @@ LinkedList::LinkedList()
    // TODO
 }
 
+// Destructor
 LinkedList::~LinkedList()
 {
    delete head;
    delete tail;
 }
 
-// Methods
+// Add node to first position
 void LinkedList::addFront(Tile *tile)
 {
    Node *temp = new Node();
@@ -37,6 +38,7 @@ void LinkedList::addFront(Tile *tile)
    }
 }
 
+// Delete the first node
 void LinkedList::deleteFront()
 {
    if (head = nullptr)
@@ -58,6 +60,7 @@ void LinkedList::deleteFront()
    }
 }
 
+// Add node to end position
 void LinkedList::addBack(Tile *tile)
 {
    Node *temp = new Node();
@@ -78,6 +81,7 @@ void LinkedList::addBack(Tile *tile)
    }
 }
 
+// Delete the end node
 void LinkedList::deleteBack()
 {
    if (head == nullptr)
@@ -100,7 +104,46 @@ void LinkedList::deleteBack()
    }
 }
 
+// Clear contents of LinkedList
+void LinkedList::clear()
+{
+   Node* temp = this->head;
+   head = head->getNext();
+   delete temp;
+}
+
+// Get/Set
 int LinkedList::getLength()
 {
    return this->length;
+}
+
+Tile* LinkedList::getFront()
+{
+   return this->head->getTile();
+}
+
+void LinkedList::setFront(Tile* tile)
+{
+   this->head->setTile(tile);
+}
+
+Tile* LinkedList::getBack()
+{
+   return this->tail->getTile();
+}
+
+void LinkedList::setBack(Tile* tile)
+{
+   this->tail->setTile(tile);
+}
+
+Node* LinkedList::getHead()
+{
+   return this->head;
+}
+
+Node* LinkedList::getTail()
+{
+   return this->tail;
 }

@@ -1,4 +1,3 @@
-
 #ifndef ASSIGN2_NODE_H
 #define ASSIGN2_NODE_H
 
@@ -7,7 +6,8 @@
 
 class Node
 {
-public:
+   public:
+
    // Constructors
    Node();
    Node(Tile *tile, Node *next);
@@ -16,6 +16,7 @@ public:
 
    // Methods
    bool checkNextMatch();
+   void clear();
 
    // Get/Set
    Tile *getTile();
@@ -24,10 +25,12 @@ public:
    Node *getNext();
    void setNext(Node *next);
 
-private:
+   private:
+
    // Member vars
    Tile *tile;
    Node *next;
+
 };
 
 #endif // ASSIGN2_NODE_H

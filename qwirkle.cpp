@@ -10,11 +10,11 @@
 void printWelcomeMessage();
 void printMenu();
 void createNewGame();
+LinkedList* tiles;
 
 int main(void)
 {
-    LinkedList *list = new LinkedList();
-    delete list;
+    tiles = new LinkedList();
 
     printWelcomeMessage();
     printMenu();
@@ -67,6 +67,22 @@ void createNewGame()
 
     std::cout << std::endl
               << "Let's Play!" << std::endl;
+}
+
+void quit(std::string out)
+{
+    // Save game state to file
+    // Save();
+
+    // Delete variables
+    delete tiles;
+    // delete player_1;
+    // delete player_2;
+    // delete bag;
+    // delete board;
+
+
+    std::cout << "Goodbye" << std::endl;
 }
 
 // TODO:
