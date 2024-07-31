@@ -73,11 +73,62 @@ bool GetInput::validateName(std::string nameString)
     return true;
 }
 
-bool GetInput::validateFileName(std::string filename)
+bool GetInput::validateFileName(std::string fileName)
 {
-    // TODO: Implement this function
-    // 1. Check that the file exists.
+    std::ifstream file(fileName);
+    if(!file.good()) 
+    {
+        return false; // return false if the file doesn't exist or can't be opened
+    }
+    // After the above check, the file exists and can be opened
+
+    // Read file content
+    // Each line is a string
+    // We have multiple lines in the file => We should use an array/a vector of strings for the lines
+    // Go to each line and do the validation
+
     // 2. Check that the format of the file is correct. The format for saved games is described in Section 2.3.7
+    /*
+    <player 1 name>
+    <player 1 score>
+    <player 1 hand>
+    <player 2 name>
+    <player 2 score>
+    <player 2 hand>
+    <Current board shape>
+    <Board State>
+    <tile bag contents>
+    <current player name>
+
+    Example:
+    A
+    8
+    Y5,R5,O2,B1,P6,Y3
+    B
+    6
+    P2,P3,O6,Y4,B2,O3
+    6,6
+    B4@B2, B6@B3, B5@B4, R4@C2, G5@C4, Y1@D1, Y4@D2, Y2@D3, P4@E2
+    P2,B5,.....
+    A
+
+    Board: 6x6 26x26
+      0 1 2 3 4 5
+    A
+    B
+    C
+    D
+    E
+    F
+
+    The format for each of the items is:
+        - Name: ASCII text - upperecase letters. NO spaces, numbers and special charachters.
+        - Score: Integer >= 0
+        - Player hand and tile bag: comma separated ordered list - each tile is represented by an uppercase letter followed by a positive integer
+        - Current board shape: Height,width - comma seperated integers > 0 and <= 26
+        - Board State: All tiles currently placed on the board should appear as a list of tile@position. <tile_letter><tile_number>@<row><column>,
+            seperated by ", " (a comma followed by a space)
+    */
 
     return true;
 }

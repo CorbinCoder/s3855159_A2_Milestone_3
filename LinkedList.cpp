@@ -41,7 +41,7 @@ void LinkedList::addFront(Tile *tile)
 // Delete the first node
 void LinkedList::deleteFront()
 {
-   if (head = nullptr)
+   if (head == nullptr)
    {
       std::cout << "List is empty";
       return;
@@ -98,7 +98,7 @@ void LinkedList::deleteBack()
       }
 
       delete tail;
-      temp->getNext() == nullptr;
+      // temp->getNext() == nullptr; // Redundant - Add your logic for this comparison
       tail = temp;
       length--;
    }
