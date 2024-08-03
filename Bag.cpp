@@ -2,7 +2,12 @@
 #include "TileCodes.h"
 #include <vector>
 
-// Default constructor
+// Default contructor
+Bag::Bag()
+{
+}
+
+// Constructor
 Bag::Bag(int numeach)
 {
     New(numeach);

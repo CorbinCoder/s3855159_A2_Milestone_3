@@ -10,6 +10,7 @@ class Bag
     public:
 
     // Contructor(s)/Destructor
+    Bag();
     Bag(int numeach);
     Bag(Bag &other);
     ~Bag();
