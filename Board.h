@@ -1,19 +1,21 @@
 #ifndef ASSIGN2_BOARD_H
 #define ASSIGN2_BOARD_H
 
-// Declare the Size type
-typedef int Size;
+// Declare the board dimension types
+typedef int Height;
+typedef int Width;
 
 // Declare the Board class
 class Board
 {
     private:
-        // Declare the size field
-        Size size;
+        // Declare the board dimension fields
+        Height height;
+        Width width;
 
     public:
         // Declare the constructor
-        Board(Size size);
+        Board(Height height, Width Width);
 
         // Declare the copy constructor
         Board(Board& board);
