@@ -7,8 +7,7 @@
 
 class Model
 {
-    public:
-
+public:
     // Constructors
 
     Model();
@@ -26,16 +25,13 @@ class Model
     // Board getBoard();
     // void setBoard(Board board);
 
-
-    private:
-
+private:
     // Member vars
 
-    Player player_1 = Player::Player();
-    Player player_2 = Player::Player();
+    Player player_1 = Player();
+    Player player_2 = Player();
     Bag bag;
     // Board board;
-
 };
 
 #endif
