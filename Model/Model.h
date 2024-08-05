@@ -17,7 +17,7 @@ class Model
     ~Model();
 
     // Methods
-    void drawHand(int player);
+    void drawHand(int player); // Draw a hand of tiles for a given player
 
     // Get/Set
     Player getPlayer(int pos);

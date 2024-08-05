@@ -16,9 +16,9 @@ class Bag
     ~Bag();
 
     // Methods
-    void New(int numeach);
-    Tile* Draw();
-    void Shuffle();
+    void New(int numeach); // Creates a new, ordered bag of tiles
+    Tile* Draw(); // Draw a tile from the bag, and remove it from the bag
+    void Shuffle(); // Shuffle the contents of the bag
 
 
     private:

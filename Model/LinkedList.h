@@ -15,12 +15,12 @@ class LinkedList
    ~LinkedList();
 
    // Methods
-   Tile* find(Colour colour, Shape shape);
-   Tile* at(int i);
-   void remove(int i);
-   void printAll();
-   void clear();
-   int size();
+   Tile* find(Colour colour, Shape shape); // Returns tile of node using colour and shape to search
+   Tile* at(int i); // Returns tile of node using index to search
+   void remove(int i); // Removes reference to tile at node using index to search
+   void printAll(); // Prints the details of tile of each node in the list
+   void clear(); // Clear the contents of the list
+   int size(); // Returns the number of nodes in the list
 
    // Get/Set
    Tile *getFront();

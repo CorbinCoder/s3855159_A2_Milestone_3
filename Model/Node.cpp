@@ -40,6 +40,11 @@ bool Node::checkNextMatch()
    }
 }
 
+void Node::clear()
+{
+   delete this->tile;
+}
+
 // Get/Set
 Tile *Node::getTile()
 {
