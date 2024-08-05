@@ -4,6 +4,7 @@
 
 #include <iostream>
 #include "Node.h"
+#include "TileCodes.h"
 
 class LinkedList
 {
@@ -14,9 +15,12 @@ class LinkedList
    ~LinkedList();
 
    // Methods
-   int getLength();
-   void clear();
-   int get(int i);
+   Tile* find(Colour colour, Shape shape); // Returns tile of node using colour and shape to search
+   Tile* at(int i); // Returns tile of node using index to search
+   void remove(int i); // Removes reference to tile at node using index to search
+   void printAll(); // Prints the details of tile of each node in the list
+   void clear(); // Clear the contents of the list
+   int size(); // Returns the number of nodes in the list
 
    // Get/Set
    Tile *getFront();
@@ -35,8 +39,7 @@ class LinkedList
    // Member vars
    Node *head;
    Node *tail;
-   int length;
-
+   static int length;
 };
 
 #endif // ASSIGN2_LINKEDLIST_H

@@ -46,7 +46,7 @@ void Bag::New(int numeach)
 // Shuffle the bag - randomises tile order
 void Bag::Shuffle()
 {
-    for (int i = 0; i < this->tiles->getLength(); i++)
+    for (int i = 0; i < this->tiles->size(); i++)
     {
         Node *ptr = tiles->getHead();
         Node* prev = nullptr;

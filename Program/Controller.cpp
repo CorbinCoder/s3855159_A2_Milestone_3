@@ -13,6 +13,7 @@ void Controller::Menu(View view, Model model)
     view.printMenu();
     std::string userChoiceString = GetInput::getInput(GetInput::validateUserChoice);
     int userChoiceInteger = std::stoi(userChoiceString);
+
     switch (userChoiceInteger)
     {
     case 1:
@@ -33,13 +34,19 @@ void Controller::NewGame(Model model, View view)
     std::cout << std::endl
               << "Starting a New Game" << std::endl;
 
+    // model.getBoard().New(11, 11);
+    model.getBag().New(4);
+    model.getBag().Shuffle();
+
     std::cout << std::endl
               << "Enter a name for player 1 (uppercase characters only)" << std::endl;
     model.getPlayer(1).init(GetInput::getInput(GetInput::validateName), Hand(6), 0, 1);
+    model.drawHand(1);
 
     std::cout << std::endl
               << "Enter a name for player 2 (uppercase characters only)" << std::endl;
     model.getPlayer(2).init(GetInput::getInput(GetInput::validateName), Hand(6), 0, 2);
+    model.drawHand(2);
 
     std::cout << std::endl
               << "Let's Play!" << std::endl;

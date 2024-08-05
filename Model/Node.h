@@ -8,17 +8,20 @@ class Node
 {
    public:
 
-   // Constructors
+   // Constructor(s)/destructor
+
    Node();
    Node(Tile *tile, Node *next);
    Node(Node &other);
    ~Node();
 
    // Methods
-   bool checkNextMatch();
-   void clear();
+
+   bool checkNextMatch(); // Check if the next tile in the list is a match for this
+   void clear(); // Clear the contents of the node
 
    // Get/Set
+
    Tile *getTile();
    void setTile(Tile *tile);
 
@@ -28,6 +31,7 @@ class Node
    private:
 
    // Member vars
+   
    Tile *tile;
    Node *next;
 

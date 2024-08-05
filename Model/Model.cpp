@@ -1,15 +1,15 @@
-// Constructors
 #include "Model.h"
 
 Model::Model()
 {
+    this->bag = Bag();
 }
 
-Model::Model(std::string player_1_name, std::string player_2_name)
+Model::Model(std::string player_1_name, std::string player_2_name, Bag bag)
 {
     this->player_1.init(player_1_name, Hand(6), 0, 1);
     this->player_2.init(player_2_name, Hand(6), 0, 2);
-    this->bag = Bag(4);
+    this->bag = bag;
     // Board board;
 }
 
@@ -30,6 +30,10 @@ Model::~Model()
 }
 
 // Methods
+void Model::drawHand(int player)
+{
+    // this->getPlayer(player).drawHand();
+}
 
 // Get/Set
 Player Model::getPlayer(int pos)

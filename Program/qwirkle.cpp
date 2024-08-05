@@ -7,18 +7,18 @@
 
 #define EXIT_SUCCESS 0
 
-View view;
-Model model;
-Controller controller;
+static Model model = Model();
+static View view = View();
+static Controller controller = Controller();
 
 int main(void)
 {
-    view = View();
-    model = Model();
-    controller = Controller();
-
-    view.printWelcomeMessage();
-    controller.Menu(view, model);
+    while (true)
+    {
+        view.printWelcomeMessage();
+        controller.Menu(view, model);
+        return;
+    }
 
     delete &view;
     delete &model;
