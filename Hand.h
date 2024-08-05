@@ -9,6 +9,7 @@ class Hand
     public:
 
     // Constructor(s)/Destructor
+    Hand();
     Hand(int handsize);
     Hand(Hand &other);
     ~Hand();
@@ -24,7 +25,7 @@ class Hand
     private:
 
     // Member vars
-    std::vector<Tile> tiles;
+    LinkedList tiles;
     int handsize;
 };
 

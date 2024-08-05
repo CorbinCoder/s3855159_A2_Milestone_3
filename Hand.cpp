@@ -1,6 +1,11 @@
 #include "Hand.h"
 
 // Default constructor
+Hand::Hand()
+{
+}
+
+// Constructor
 Hand::Hand(int handsize)
 {
     this->handsize = handsize;
@@ -9,6 +14,7 @@ Hand::Hand(int handsize)
 // Copy constructor
 Hand::Hand(Hand &other)
 {
+    this->handsize = other.handsize;
     this->tiles = other.tiles;
 }
 
