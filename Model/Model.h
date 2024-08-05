@@ -12,11 +12,12 @@ class Model
     // Constructor(s)/destructor
 
     Model();
-    Model(std::string player_1_name, std::string player_2_name);
+    Model(std::string player_1_name, std::string player_2_name, Bag bag);
     Model(Model &other);
     ~Model();
 
     // Methods
+    void drawHand(int player);
 
     // Get/Set
     Player getPlayer(int pos);

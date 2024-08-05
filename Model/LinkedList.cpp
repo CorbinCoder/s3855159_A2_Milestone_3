@@ -6,8 +6,6 @@ LinkedList::LinkedList()
 {
    head = nullptr;
    tail = nullptr;
-
-   // TODO
 }
 
 // Destructor
@@ -15,6 +13,115 @@ LinkedList::~LinkedList()
 {
    delete head;
    delete tail;
+}
+
+// Methods
+
+Tile* LinkedList::find(Colour colour, Shape shape)
+{
+   Node* temp = new Node();
+   temp = this->head;
+
+   if (temp != nullptr)
+   {
+      while (temp != nullptr)
+      {
+         if (temp->getTile()->getColour() == colour
+         && temp->getTile()->getShape() == shape)
+         {
+            return temp->getTile();
+         }
+         temp->setNext(temp->getNext());
+      }
+   }
+   else
+   {
+      std::cout << "Error - List is empty" << std::endl;
+   }
+}
+
+Tile* LinkedList::at(int i)
+{
+   Node* temp = new Node();
+   temp = this->head;
+
+   if (temp != nullptr)
+   {
+      while (temp != nullptr)
+      {
+         if (i == this->length)
+         {
+            return temp->getTile();
+         }
+         temp->setNext(temp->getNext());
+      }
+   }
+   else
+   {
+      std::cout << "Error - List is empty" << std::endl;
+   }
+}
+
+void LinkedList::remove(int i)
+{
+
+   Node* temp = new Node();
+   temp = this->head;
+
+   if (temp != nullptr)
+   {
+      while (temp != nullptr)
+      {
+         if (this->length == i)
+         {
+
+            Node* prev = temp;
+            temp->setNext(temp->getNext()->getNext());
+         }
+         temp->setNext(temp->getNext());
+      }
+   }
+   else
+   {
+      std::cout << "Error - List is empty" << std::endl;
+   }
+}
+
+void LinkedList::printAll()
+{
+   Node* temp = new Node();
+   temp = this->head;
+   int i = 0;
+
+   if (temp != nullptr)
+   {
+      while (temp != nullptr && i <= this->length)
+      {
+         std::cout << "Node #" << i 
+                     << " Colour: " << this->at(i)->getColour()
+                     << " Shape: " << this->at(i)->getShape();
+         temp->setNext(temp->getNext());
+         i++;
+      }
+   }
+   else
+   {
+      std::cout << "Error - List is empty" << std::endl;
+   }
+}
+
+// Clear contents of LinkedList
+void LinkedList::clear()
+{
+   Node* temp = this->head;
+   head = head->getNext();
+   delete temp;
+}
+
+// Get/Set
+int LinkedList::size()
+{
+   return this->length;
 }
 
 // Add node to first position
@@ -102,20 +209,6 @@ void LinkedList::deleteBack()
       tail = temp;
       length--;
    }
-}
-
-// Clear contents of LinkedList
-void LinkedList::clear()
-{
-   Node* temp = this->head;
-   head = head->getNext();
-   delete temp;
-}
-
-// Get/Set
-int LinkedList::getLength()
-{
-   return this->length;
 }
 
 Tile* LinkedList::getFront()
