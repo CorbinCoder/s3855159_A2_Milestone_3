@@ -13,7 +13,6 @@ private:
     int position;
 
 public:
-
     // default constructor
     Player();
 
@@ -31,9 +30,9 @@ public:
 
     void init(std::string name, Hand hand, int score, int position);
 
-    void placeTile(Tile selectedTile);
+    Tile *placeTile(Colour colour, Shape shape);
 
-    void replaceTile(Tile selectedTile, Tile newTile);
+    void replaceTile(Colour colour, Shape shape, Tile newTile);
 
     void createHand();
 
