@@ -53,28 +53,32 @@ void Player::init(std::string name, Hand hand, int score, int position)
     this->score = score;
     this->position = position;
 }
-
-void Player::placeTile(Tile selectedTile)
+// called when a player types in the command, place {tile} at {position}
+Tile *Player::placeTile(Colour colour, Shape shape)
 {
 
     // check tile is in player's hand
+    Tile *selectedTile = hand.getTile(colour, shape);
 
-    // remove tile from player's hand
+    if (selectedTile != nullptr)
+    {
+        // remove tile from player's hand
+        hand.removeTile(selectedTile);
+    }
 
     // another function will place it on the board
 }
 
-void Player::replaceTile(Tile selectedTile, Tile newTile)
+void Player::replaceTile(Colour colour, Shape shape, Tile newTile)
 {
-    // check tile is in player's hand
-
-    // removes tile from player's hand
+    placeTile(colour, shape);
 
     // replaces it with newTile
 }
 
 void Player::createHand()
 {
+
     // creates LinkedList and adds 6 random tiles to it
 }
 
