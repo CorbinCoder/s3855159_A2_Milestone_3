@@ -1,0 +1,11 @@
+4 Files
+
+<testname>.input - Input to provide to the Qwirkle program via stdin
+<testname>.output - Expected output from the Qwirkle program on stdout
+(Optional) <testname>.save - Input save file to provide to the Qwirkle program if required by the test.
+(Optional) <testname>.expsave - Expected output saved game file.
+
+What to test
+Displaying empty board of 11 x 11
+displaying board with a certain tile on it (use saved game)
+

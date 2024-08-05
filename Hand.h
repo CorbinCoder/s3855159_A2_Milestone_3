@@ -6,8 +6,7 @@
 
 class Hand
 {
-    public:
-
+public:
     // Constructor(s)/Destructor
     Hand();
     Hand(int handsize);
@@ -19,11 +18,12 @@ class Hand
     // Get/Set
     Tile *getTile(Colour colour, Shape shape);
     int getHandsize();
+    void removeTile(Tile *tile);
+    void addTile(Tile *tile);
     void setTile(Colour colour, Shape shape, Tile *tile);
     void setHandsize(int handsize);
 
-    private:
-
+private:
     // Member vars
     LinkedList tiles;
     int handsize;
