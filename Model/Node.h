@@ -17,8 +17,8 @@ class Node
 
    // Methods
 
-   bool checkNextMatch();
-   void clear();
+   bool checkNextMatch(); // Check if the next tile in the list is a match for this
+   void clear(); // Clear the contents of the node
 
    // Get/Set
 

@@ -16,6 +16,7 @@ class Hand
     ~Hand();
 
     // Methods
+    
 
     // Get/Set
     Tile *getTile(Colour colour, Shape shape);
