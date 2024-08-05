@@ -48,8 +48,8 @@ bool GetInput::validateUserChoice(std::string userChoiceString)
     // Validate if the userChoiceString displays an integer
     if (GetInput::isInteger(userChoiceString))
     {
-        int userChoiceInteger = std::stoi(userChoiceString);
-        if (userChoiceInteger >= 1 && userChoiceInteger <= 4)
+        int scoreInteger = std::stoi(userChoiceString);
+        if (scoreInteger >= 1 && scoreInteger <= 4)
         {
             return true;
         }
@@ -61,6 +61,9 @@ bool GetInput::validateUserChoice(std::string userChoiceString)
 // Validate upperecase letters. NO spaces, numbers and special charachters.
 bool GetInput::validateName(std::string nameString)
 {
+    if (nameString.empty())
+        return false;
+
     // For every character in the nameString
     for (char c : nameString)
     {
@@ -73,10 +76,73 @@ bool GetInput::validateName(std::string nameString)
     return true;
 }
 
+std::vector<std::string> GetInput::readFileLines(std::string fileName)
+{
+    std::ifstream file(fileName); // Read the file with path "fileName" and assign the content to variable "file";
+    std::vector<std::string> lines;
+
+    // We know that the file is good
+    std::string currentLine; // The current line that we are reading
+    while (std::getline(file, currentLine))
+    { // read the current line
+        lines.push_back(currentLine);
+    }
+
+    // After finishing reading the whole file, we need to close the file
+    file.close();
+    return lines;
+}
+
+bool GetInput::validateScore(std::string scoreString)
+{
+    if (GetInput::isInteger(scoreString))
+    {
+        int scoreInteger = std::stoi(scoreString);
+        if (scoreInteger < 0)
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+    }
+
+    return false;
+}
+
+bool GetInput::validatePlayerHand(std::string playerHand)
+{
+    //  Player hand: comma separated ordered list - each tile is represented by an uppercase letter followed by a positive integer
+    // Step 1: read the playHand and seperate the string by the comma and put the result into a vector of string
+    //          Y5,R5,O2,B1,P6,Y3 => ["Y5", ...]
+    // https://stackoverflow.com/questions/1894886/parsing-a-comma-delimited-stdstring
+    std::vector<std::string> tiles;
+    std::stringstream ss(playerHand); // Y5,R5,O2,B1,P6,Y3
+    std::string tile;
+    while (ss.good())
+    {
+        std::getline(ss, tile, ',');
+        tiles.push_back(tile);
+    }
+
+    for (std::string tile : tiles)
+    {
+        // std::cout << tile << std::endl;
+
+        if (!Tile::validateTile(tile))
+        {
+            return false;
+        }
+    }
+
+    return true;
+}
+
 bool GetInput::validateFileName(std::string fileName)
 {
     std::ifstream file(fileName);
-    if(!file.good()) 
+    if (!file.good())
     {
         return false; // return false if the file doesn't exist or can't be opened
     }
@@ -86,7 +152,43 @@ bool GetInput::validateFileName(std::string fileName)
     // Each line is a string
     // We have multiple lines in the file => We should use an array/a vector of strings for the lines
     // Go to each line and do the validation
+    std::vector<std::string> lines = GetInput::readFileLines(fileName);
+    if (lines.size() != 10)
+    {
+        return false;
+    }
 
+    if (!GetInput::validateName(lines[0]))
+    {
+        return false;
+    }
+
+    if (!GetInput::validateScore(lines[1]))
+    {
+        return false;
+    }
+
+    if (!GetInput::validatePlayerHand(lines[2]))
+    {
+        return false;
+    }
+
+    if (!GetInput::validateName(lines[3]))
+    {
+        return false;
+    }
+
+    if (!GetInput::validateScore(lines[4]))
+    {
+        return false;
+    }
+
+    if (!GetInput::validatePlayerHand(lines[5]))
+    {
+        return false;
+    }
+
+    std::cout << "Valid" << std::endl;
     // 2. Check that the format of the file is correct. The format for saved games is described in Section 2.3.7
     /*
     <player 1 name>
