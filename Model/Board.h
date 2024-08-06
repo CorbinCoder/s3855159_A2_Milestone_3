@@ -1,5 +1,6 @@
 #ifndef ASSIGN2_BOARD_H
 #define ASSIGN2_BOARD_H
+#include "Tile.h"
 
 // Declare the board dimension types
 typedef int Height;
@@ -22,6 +23,12 @@ class Board
 
         // Declare the move constructor
         Board(Board&& board);
+
+        // Add Tile method
+        void addTile(Tile tile, int col, int row);
+
+        // Display board method
+        void displayBoard();
 
         // Declare the destructor
         ~Board();
