@@ -2,13 +2,13 @@
 
 Model::Model()
 {
-    this->bag = Bag();
+    this->bag = Bag(4);
 }
 
 Model::Model(std::string player_1_name, std::string player_2_name, Bag bag)
 {
-    this->player_1.init(player_1_name, Hand(6), 0, 1);
-    this->player_2.init(player_2_name, Hand(6), 0, 2);
+    this->player_1.init(player_1_name, new Hand(6), 0, 1);
+    this->player_2.init(player_2_name, new Hand(6), 0, 2);
     this->bag = bag;
     // Board board;
 }
