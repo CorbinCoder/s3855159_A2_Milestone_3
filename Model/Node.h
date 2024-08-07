@@ -2,7 +2,7 @@
 #define ASSIGN2_NODE_H
 
 #include "Tile.h"
-#include "../../Utilities/TileCodes.h"
+#include "../Utilities/TileCodes.h"
 
 class Node
 {
