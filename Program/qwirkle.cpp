@@ -2,7 +2,7 @@
 #include <string>
 
 #include "View.h"
-#include "Model.h"
+#include "../../Model/Model.h"
 #include "Controller.h"
 
 #define EXIT_SUCCESS 0

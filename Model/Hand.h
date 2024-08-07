@@ -2,6 +2,7 @@
 #define ASSIGN2_HAND_H
 
 #include "Tile.h"
+#include "LinkedList.h"
 #include <vector>
 
 class Hand

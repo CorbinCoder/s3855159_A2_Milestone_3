@@ -1,5 +1,5 @@
-#include "PLayer.h";
-#include "LinkedList.h";
+#include "PLayer.h"
+#include "LinkedList.h"
 
 // default constructor
 Player::Player()
