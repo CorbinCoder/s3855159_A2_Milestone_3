@@ -71,6 +71,9 @@ Tile *Player::placeTile(Colour colour, Shape shape)
 
 void Player::replaceTile(Colour colour, Shape shape, Tile newTile)
 {
+    // check tile is in player's hand
+
+    // removes tile from player's hand
     placeTile(colour, shape);
 
     // replaces it with newTile
