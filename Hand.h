@@ -2,14 +2,15 @@
 #define ASSIGN2_HAND_H
 
 #include "Tile.h"
+#include "LinkedList.h"
 #include <vector>
 
 class Hand
 {
-    public:
-
+public:
     // Constructor(s)/Destructor
-    Hand(int handsize);
+    Hand();
+    // Hand(int handsize);
     Hand(Hand &other);
     ~Hand();
 
@@ -18,13 +19,14 @@ class Hand
     // Get/Set
     Tile *getTile(Colour colour, Shape shape);
     int getHandsize();
+    void removeTile(Tile *tile);
+    void addTile(Tile *tile);
     void setTile(Colour colour, Shape shape, Tile *tile);
     void setHandsize(int handsize);
 
-    private:
-
+private:
     // Member vars
-    std::vector<Tile> tiles;
+    LinkedList tiles;
     int handsize;
 };
 

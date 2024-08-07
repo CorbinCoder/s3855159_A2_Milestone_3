@@ -2,7 +2,12 @@
 #include "TileCodes.h"
 #include <vector>
 
-// Default constructor
+// Default contructor
+Bag::Bag()
+{
+}
+
+// Constructor
 Bag::Bag(int numeach)
 {
     New(numeach);
@@ -23,12 +28,12 @@ Bag::~Bag()
 // Create a new bag - set number of each tile
 void Bag::New(int numeach)
 {
-    char colours[6] {RED, ORANGE, YELLOW, GREEN, BLUE, PURPLE};
-    char shapes[6] {CIRCLE, STAR_4, DIAMOND, SQUARE, STAR_6, CLOVER};
+    char colours[6]{RED, ORANGE, YELLOW, GREEN, BLUE, PURPLE};
+    char shapes[6]{CIRCLE, STAR_4, DIAMOND, SQUARE, STAR_6, CLOVER};
 
-    for (int i = 0; i < sizeof(colours); i++)
+    for (unsigned int i = 0; i < sizeof(colours); i++)
     {
-        for (int j = 0; j < sizeof(shapes); j++)
+        for (unsigned int j = 0; j < sizeof(shapes); j++)
         {
             for (int i = 0; i < numeach; i++)
             {
@@ -41,10 +46,10 @@ void Bag::New(int numeach)
 // Shuffle the bag - randomises tile order
 void Bag::Shuffle()
 {
-    for (int i = 0; i < this->tiles->getLength(); i++)
+    for (int i = 0; i < this->tiles->size(); i++)
     {
         Node *ptr = tiles->getHead();
-        Node* prev = nullptr;
+        Node *prev = nullptr;
 
         while (ptr && ptr->getNext())
         {
@@ -62,9 +67,9 @@ void Bag::Shuffle()
 }
 
 // Draw a tile from the bag - draws from the top
-Tile* Bag::Draw()
+Tile *Bag::Draw()
 {
-    Tile* temp = this->tiles->getFront();
+    Tile *temp = this->tiles->getFront();
 
     this->tiles->deleteFront();
 

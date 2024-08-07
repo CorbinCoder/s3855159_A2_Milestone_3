@@ -21,6 +21,7 @@ private:
    Shape shape;
 
 public:
+   Tile();
    // constructor
    Tile(Colour colour, Shape shape);
 

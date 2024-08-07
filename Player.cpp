@@ -1,8 +1,13 @@
-#include "PLayer.h";
-#include "LinkedList.h";
+#include "PLayer.h"
+#include "LinkedList.h"
+
+// default constructor
+Player::Player()
+{
+}
 
 // constructor
-Player::Player(std::string name, LinkedList hand, int score, int position)
+Player::Player(std::string name, Hand hand, int score, int position)
 {
     this->name = name;
     this->hand = hand;
@@ -13,6 +18,10 @@ Player::Player(std::string name, LinkedList hand, int score, int position)
 // Destructor
 Player::~Player()
 {
+    delete &this->name;
+    delete &this->hand;
+    delete &this->score;
+    delete &this->position;
     // delete[] &this->hand; // this->hand is a class instance of LinkedList, not a pointer
 }
 
@@ -20,7 +29,7 @@ Player::~Player()
 Player::Player(Player &other)
 {
     name = other.name;
-    hand = LinkedList(other.hand);
+    hand = Hand(other.hand);
     score = other.score;
     position = other.position;
 }
@@ -30,32 +39,48 @@ Player::Player(Player &other)
 Player::Player(Player &&other)
 {
     name = other.name;
-    hand = other.hand;
+    hand = Hand(other.hand);
     score = other.score;
     position = other.position;
 }
 
-void Player::placeTile(Tile selectedTile)
+// Used to initialize player data after instance
+// is initialized
+void Player::init(std::string name, Hand hand, int score, int position)
+{
+    this->name = name;
+    this->hand = Hand(hand);
+    this->score = score;
+    this->position = position;
+}
+// called when a player types in the command, place {tile} at {position}
+Tile *Player::placeTile(Colour colour, Shape shape)
 {
 
     // check tile is in player's hand
+    Tile *selectedTile = hand.getTile(colour, shape);
 
-    // remove tile from player's hand
+    if (selectedTile != nullptr)
+    {
+        // remove tile from player's hand
+        hand.removeTile(selectedTile);
+    }
 
     // another function will place it on the board
+
+    return NULL;
 }
 
-void Player::replaceTile(Tile selectedTile, Tile newTile)
+void Player::replaceTile(Colour colour, Shape shape, Tile newTile)
 {
-    // check tile is in player's hand
-
-    // removes tile from player's hand
+    placeTile(colour, shape);
 
     // replaces it with newTile
 }
 
 void Player::createHand()
 {
+
     // creates LinkedList and adds 6 random tiles to it
 }
 
@@ -65,7 +90,7 @@ std::string Player::getName()
     return this->name;
 }
 
-LinkedList Player::getHand()
+Hand Player::getHand()
 {
     return this->hand;
 }

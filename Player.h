@@ -1,20 +1,23 @@
 #ifndef ASSIGN2_PLAYER_H
 #define ASSIGN2_PLAYER_H
 #include <string>
-#include "LinkedList.h"
 #include "Tile.h"
+#include "Hand.h"
 
 class Player
 {
 private:
     std::string name;
-    LinkedList hand;
+    Hand hand;
     int score;
     int position;
 
 public:
+    // default constructor
+    Player();
+
     // constructor
-    Player(std::string name, LinkedList hand, int score, int position);
+    Player(std::string name, Hand hand, int score, int position);
 
     // Destructor
     ~Player();
@@ -25,16 +28,18 @@ public:
     // Move Constructor
     Player(Player &&other);
 
-    void placeTile(Tile selectedTile);
+    void init(std::string name, Hand hand, int score, int position);
 
-    void replaceTile(Tile selectedTile, Tile newTile);
+    Tile *placeTile(Colour colour, Shape shape);
+
+    void replaceTile(Colour colour, Shape shape, Tile newTile);
 
     void createHand();
 
     // getters and setters
     std::string getName();
 
-    LinkedList getHand();
+    Hand getHand();
 
     int getScore();
 
