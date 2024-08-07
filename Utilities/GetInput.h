@@ -2,7 +2,7 @@
 #ifndef ASSIGN2_GETINPUT_H
 #define ASSIGN2_GETINPUT_H
 
-#include "Tile.h"
+#include "../Model/Tile.h"
 #include <iostream>
 #include <string>
 #include <fstream>
