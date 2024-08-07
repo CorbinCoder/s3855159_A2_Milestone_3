@@ -5,6 +5,20 @@
 (Optional) <testname>.save - Input save file to provide to the Qwirkle program if required by the test.
 (Optional) <testname>.expsave - Expected output saved game file.
 
+A test is run using the following sequence of commands.
+
+-./qwirkle < <testname>.input > <testname>.gameout
+
+-diff -w <testname>.output <testname>.gameout
+
+-if [-e <testname>.expsave] diff -w -y <testname>.expsave <actual_gamesave>
+
+
+If this command displays any output, then the test has failed. Testing uses the diff command. This
+command checks to see if two files have any differences. The -w options ignores any white-space.
+To make testing reliable, you should note if the test evaluates the saved game output, then ensure the test uses
+a suitable filename in place of <actual_gamesave>.
+
 ASSUMPTIONS: 
 
 The board will be 11 x 11 by default (though we can test for making a differently sized board)
