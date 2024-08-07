@@ -22,6 +22,8 @@ private:
     static std::vector<std::string> readFileLines(std::string fileName);
     static bool validateScore(std::string scoreString);
     static bool validatePlayerHand(std::string playerHand);
+    static std::vector<int> validateBoardSizes(std::string boardSizes);
+    static bool validateBoardState(std::string boardState, int width, int height);
 };
 
 #endif // ASSIGN2_GETINPUT_H

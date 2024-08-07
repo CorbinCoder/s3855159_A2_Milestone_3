@@ -139,6 +139,84 @@ bool GetInput::validatePlayerHand(std::string playerHand)
     return true;
 }
 
+std::vector<int> GetInput::validateBoardSizes(std::string boardSizes)
+{
+    // Current board shape: Height,width - comma seperated integers > 0 and <= 26
+    std::vector<std::string> sizes;
+    std::stringstream ss(boardSizes); // 6,6
+    std::string size;
+    while (ss.good())
+    {
+        std::getline(ss, size, ',');
+        sizes.push_back(size);
+    }
+
+    if (sizes.size() != 2)
+    {
+        return std::vector<int>();
+    }
+
+    std::vector<int> boardSizesInt;
+    for (std::string size : sizes)
+    {
+        if (!GetInput::isInteger(size))
+        {
+            return std::vector<int>();
+        }
+
+        int sizeInteger = std::stoi(size);
+        if (sizeInteger <= 0 || sizeInteger > 26)
+        {
+            return std::vector<int>();
+        }
+
+        boardSizesInt.push_back(sizeInteger);
+    }
+
+    return boardSizesInt;
+}
+
+bool GetInput::validateBoardState(std::string boardState, int width, int height)
+{
+    // Board State: All tiles currently placed on the board should appear as a list of tile@position. <tile_letter><tile_number>@<row><column>,
+    // seperated by ", " (a comma followed by a space)
+    // B4@B2, B6@B3, B5@B4, R4@C2, G5@C4, Y1@D1, Y4@D2, Y2@D3, P4@E2
+    std::vector<std::string> states;
+    std::string delimiter = ", ";
+    unsigned int position = 0;
+    while ((position = boardState.find(delimiter)) != std::string::npos)
+    {
+        states.push_back(boardState.substr(0, position));
+        boardState.erase(0, position + delimiter.length());
+    }
+
+    states.push_back(boardState);
+
+    for (std::string state : states)
+    {
+        std::vector<std::string> stateParts;
+        std::stringstream ss(state);
+        std::string statePart;
+        while (ss.good())
+        {
+            std::getline(ss, statePart, '@');
+            stateParts.push_back(statePart);
+        }
+
+        if (stateParts.size() != 2)
+        {
+            return false;
+        }
+
+        if (!Tile::validateTile(stateParts[0]) || !Tile::validateTilePosition(stateParts[1], width, height))
+        {
+            return false;
+        }
+    }
+
+    return true;
+}
+
 bool GetInput::validateFileName(std::string fileName)
 {
     std::ifstream file(fileName);
@@ -188,7 +266,29 @@ bool GetInput::validateFileName(std::string fileName)
         return false;
     }
 
-    std::cout << "Valid" << std::endl;
+    std::vector<int> boardSizes = GetInput::validateBoardSizes(lines[6]);
+    if (boardSizes.size() != 2)
+    {
+        return false;
+    }
+
+    if (!GetInput::validateBoardState(lines[7], boardSizes[0], boardSizes[1]))
+    {
+        return false;
+    }
+
+    if (!GetInput::validatePlayerHand(lines[8]))
+    {
+        return false;
+    }
+
+    if (lines[9] != lines[0] && lines[9] != lines[3])
+    {
+        return false;
+    }
+
+    std::cout << std::endl
+              << "Qwirkle game successfully loaded" << std::endl;
     // 2. Check that the format of the file is correct. The format for saved games is described in Section 2.3.7
     /*
     <player 1 name>

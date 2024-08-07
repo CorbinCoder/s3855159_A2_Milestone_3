@@ -38,6 +38,7 @@ public:
    Shape getShape();
 
    static bool validateTile(std::string tileString);
+   static bool validateTilePosition(std::string tilePositionString, int width, int height);
 };
 
 #endif // ASSIGN2_TILE_H
