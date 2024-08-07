@@ -1,7 +1,7 @@
 #ifndef ASSIGN2_TILE_H
 #define ASSIGN2_TILE_H
 
-#include "TileCodes.h"
+#include "../Utilities/TileCodes.h"
 #include <string>
 #include <iostream>
 
@@ -42,4 +42,4 @@ public:
    static bool validateTilePosition(std::string tilePositionString, int width, int height);
 };
 
-#endif // ASSIGN2_TILE_H
+#endif // ASSIGN2_TILE
