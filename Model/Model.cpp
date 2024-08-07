@@ -15,11 +15,11 @@ Model::Model(std::string player_1_name, std::string player_2_name, Bag bag)
 
 Model::Model(Model &other)
 {
-this->player_1.init(other.player_1.getName(), other.player_1.getHand(), 
-                    other.player_1.getScore(), other.player_1.getPosition());
-this->player_2.init(other.player_2.getName(), other.player_2.getHand(), 
-                    other.player_2.getScore(), other.player_2.getPosition());
-this->bag = Bag(other.bag);
+    this->player_1.init(other.player_1.getName(), other.player_1.getHand(),
+                        other.player_1.getScore(), other.player_1.getPosition());
+    this->player_2.init(other.player_2.getName(), other.player_2.getHand(),
+                        other.player_2.getScore(), other.player_2.getPosition());
+    this->bag = Bag(other.bag);
 }
 
 Model::~Model()

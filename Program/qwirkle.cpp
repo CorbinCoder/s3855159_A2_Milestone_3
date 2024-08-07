@@ -5,13 +5,11 @@
 #include "../Model/Model.h"
 #include "Controller.h"
 
-#define EXIT_SUCCESS 0;
-
 int main(void)
 {
-    Model* model = new Model();
-    View* view = new View();
-    Controller* controller = new Controller();
+    Model *model = new Model();
+    View *view = new View();
+    Controller *controller = new Controller();
 
     while (true)
     {
@@ -20,9 +18,9 @@ int main(void)
         break;
     }
 
-    delete &view;
-    delete &model;
-    delete &controller;
+    delete view;
+    delete model;
+    delete controller;
 
     return EXIT_SUCCESS;
 }
