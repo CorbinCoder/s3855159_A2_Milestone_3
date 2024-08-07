@@ -31,9 +31,9 @@ void Bag::New(int numeach)
     char colours[6]{RED, ORANGE, YELLOW, GREEN, BLUE, PURPLE};
     char shapes[6]{CIRCLE, STAR_4, DIAMOND, SQUARE, STAR_6, CLOVER};
 
-    for (int i = 0; i < sizeof(colours); i++)
+    for (unsigned int i = 0; i < sizeof(colours); i++)
     {
-        for (int j = 0; j < sizeof(shapes); j++)
+        for (unsigned int j = 0; j < sizeof(shapes); j++)
         {
             for (int i = 0; i < numeach; i++)
             {
