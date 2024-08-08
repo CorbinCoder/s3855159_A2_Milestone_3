@@ -5,7 +5,7 @@ Model::Model()
     this->bag = Bag();
 }
 
-Model::Model(std::string player_1_name, std::string player_2_name, Bag bag) : player_1(player_1_name, 6, 0, 1), player_2(player_2_name, 6, 0, 2)
+Model::Model(std::string player_1_name, std::string player_2_name, Bag bag)
 {
     this->bag = bag;
     // Board board;
@@ -70,11 +70,13 @@ void Model::setPlayer(int pos, Player player)
 {
     if (pos == 1)
     {
-        this->player_1 = player;
+        this->player_1.init(player.getName(), player.getHand(),
+                            player.getScore(), player.getPosition());
     }
     else if (pos == 2)
     {
-        this->player_2 = player;
+        this->player_2.init(player.getName(), player.getHand(),
+                            player.getScore(), player.getPosition());
     }
     else
     {
