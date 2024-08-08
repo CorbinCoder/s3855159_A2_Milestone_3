@@ -20,15 +20,15 @@ public:
     Player(std::string name, int handSize, int score, int position);
 
     // Destructor
-    // ~Player();
+    ~Player();
 
     // Copy Constructor
-    // Player(Player &other);
+    Player(Player &other);
 
     // Move Constructor
-    // Player(Player &&other);
+    Player(Player &&other);
 
-    // void init(std::string name, int score, int position, int handSize);
+    void init(std::string name, int score, int position, int handSize);
 
     Tile *placeTile(Colour colour, Shape shape);
 

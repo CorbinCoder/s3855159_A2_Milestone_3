@@ -52,6 +52,7 @@ Player Model::getPlayer(int pos)
     {
         std::cout << "Error - player position is invalid" << std::endl;
     }
+    return Player();
 }
 
 Bag Model::getBag()

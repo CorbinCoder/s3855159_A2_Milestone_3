@@ -16,43 +16,68 @@ Player::Player(std::string name, int handSize, int score, int position)
 }
 
 // Destructor
-// Player::~Player()
-// {
-//     delete &this->name;
-//     delete &this->hand;
-//     delete &this->score;
-//     delete &this->position;
-// delete[] &this->hand; // this->hand is a class instance of LinkedList, not a pointer
-//}
+Player::~Player()
+{
+    delete &this->name;
+    delete &this->hand;
+    delete &this->score;
+    delete &this->position;
+    delete[] &this->hand; // this->hand is a class instance of LinkedList, not a pointer
+}
 
 // Copy Constructor
-// Player::Player(Player &other)
-// {
-//     name = other.name;
-//     hand = Hand(other.hand);
-//     score = other.score;
-//     position = other.position;
-// }
+Player::Player(Player &other)
+{
+    name = other.name;
+    hand = Hand(other.hand);
+    score = other.score;
+    position = other.position;
+}
 
 // Move Constructor
 // run when std::move is used
-// Player::Player(Player &&other)
-// {
-//     name = other.name;
-//     hand = Hand(other.hand);
-//     score = other.score;
-//     position = other.position;
-// }
+Player::Player(Player &&other)
+{
+    name = other.name;
+    hand = Hand(other.hand);
+    score = other.score;
+    position = other.position;
+}
+
+Player &Player::operator=(Player &other)
+{
+
+    // checks that original and copy have same memory address
+    if (this != &other)
+    {
+        // creates new array, copies values and destroys old array
+        Node **newNodes = new Node *[other.capacity];
+        for (int i = 0; i < other.length; ++i)
+        {
+            newNodes[i] = new Node(*(other.nodes[i]));
+        }
+        for (int j = 0; j < length; j++)
+        {
+            delete nodes[j];
+            nodes[j] = nullptr;
+        }
+        delete[] nodes;
+        nodes = newNodes;
+        capacity = other.capacity;
+        length = other.length;
+    }
+    return *this;
+}
 
 // Used to initialize player data after instance
 // is initialized
-// void Player::init(std::string name, int score, int position, int handSize)
-// {
-//     this->name = name;
-//     this->hand = Hand();
-//     this->score = score;
-//     this->position = position;
-// }
+void Player::init(std::string name, int score, int position, int handSize)
+{
+    this->name = name;
+    this->hand = Hand();
+    this->score = score;
+    this->position = position;
+}
 
 // called when a player types in the command, place {tile} at {position}
 Tile *Player::placeTile(Colour colour, Shape shape)

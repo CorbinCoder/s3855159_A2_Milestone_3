@@ -19,10 +19,10 @@ Hand::Hand(int handsize)
 // }
 
 // Destructor
-// Hand::~Hand()
-// {
-//     tiles.clear();
-// }
+Hand::~Hand()
+{
+    tiles.clear();
+}
 
 // Methods
 
