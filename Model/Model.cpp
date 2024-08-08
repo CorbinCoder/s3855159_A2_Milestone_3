@@ -40,18 +40,21 @@ void Model::drawHand(int player)
 // Get/Set
 Player Model::getPlayer(int pos)
 {
-    if (pos = 1)
+
+    Player player{};
+    if (pos == 1)
     {
-        return this->player_1;
+        player = player_1;
     }
-    else if (pos = 2)
+    else if (pos == 2)
     {
-        return this->player_2;
+        player = player_2;
     }
     else
     {
         std::cout << "Error - player position is invalid" << std::endl;
     }
+    return player;
 }
 
 Bag Model::getBag()

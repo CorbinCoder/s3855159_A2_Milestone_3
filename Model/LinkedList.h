@@ -42,7 +42,7 @@ private:
    // Member vars
    Node *head;
    Node *tail;
-   int length = 0;
+   int length;
 };
 
 #endif // ASSIGN2_LINKEDLIST_H
