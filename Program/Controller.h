@@ -15,12 +15,13 @@ public:
     ~Controller();
 
     // Methods
-    void Menu(View view, Model model);
-    void NewGame(Model model, View view);
+    void Menu(View view);
+    void NewGame(View view);
     void Quit(std::string out);
 
 private:
     // Member vars
+    Model* model;
 };
 
 #endif

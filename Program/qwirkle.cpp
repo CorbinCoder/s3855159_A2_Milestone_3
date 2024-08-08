@@ -5,7 +5,6 @@
 #include "../Model/Model.h"
 #include "Controller.h"
 
-Model model;
 static View view = View();
 static Controller controller = Controller();
 
@@ -14,7 +13,7 @@ int main(void)
     while (true)
     {
         view.printWelcomeMessage();
-        controller.Menu(view, model);
+        controller.Menu(view);
         break;
     }
 

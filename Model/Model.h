@@ -11,6 +11,7 @@ public:
     // Constructor(s)/destructor
 
     Model();
+    Model(std::string player_1_name, std::string player_2_name);
     Model(std::string player_1_name, std::string player_2_name, Bag bag);
     Model(Model &other);
     ~Model();
@@ -19,7 +20,7 @@ public:
     void drawHand(int player); // Draw a hand of tiles for a given player
 
     // Get/Set
-    Player getPlayer(int pos);
+    Player* getPlayer(int pos);
     Bag getBag();
     void setPlayer(int pos, Player player);
     void setBag(Bag bag);
@@ -29,9 +30,9 @@ public:
 private:
     // Member vars
 
-    Player player_1;
-    Player player_2;
-    Bag bag;
+    Player* player1;
+    Player* player2;
+    // Bag bag;
     // Board board;
 };
 
