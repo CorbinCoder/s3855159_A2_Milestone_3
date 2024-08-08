@@ -6,10 +6,10 @@ Hand::Hand()
 }
 
 // Constructor
-// Hand::Hand(int handsize)
-// {
-//     this->handsize = handsize;
-// }
+Hand::Hand(int handsize)
+{
+    this->handsize = handsize;
+}
 
 // Copy constructor
 Hand::Hand(Hand &other)
@@ -42,7 +42,7 @@ Tile* Hand::getTile(Colour colour, Shape shape)
     return NULL;
 }
 
-void Hand::setTile(Colour colour, Shape shape, Tile *tile)
+void Hand::setTile(Colour colour, Shape shape, Tile* tile)
 {
     for (unsigned int i = 0; i < sizeof(this->tiles); i++)
     {
@@ -56,20 +56,11 @@ void Hand::setTile(Colour colour, Shape shape, Tile *tile)
     }
 }
 
-void Hand::removeTile(Tile *tile)
+void Hand::removeTile(Tile* tile)
 {
 }
 
-void Hand::addTile(Tile *tile)
-{
-    this->tiles.addBack(tile);
-}
-
-void Hand::removeTile(Tile *tile)
-{
-}
-
-void Hand::addTile(Tile *tile)
+void Hand::addTile(Tile* tile)
 {
     this->tiles.addBack(tile);
 }

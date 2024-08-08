@@ -10,7 +10,7 @@ class Hand
 public:
     // Constructor(s)/Destructor
     Hand();
-    // Hand(int handsize);
+    Hand(int handsize);
     Hand(Hand &other);
     ~Hand();
 
@@ -21,6 +21,7 @@ public:
     int getHandsize();
     void removeTile(Tile *tile);
     void addTile(Tile *tile);
+    void drawHand(Tile *bagTiles[]);
     void setTile(Colour colour, Shape shape, Tile *tile);
     void setHandsize(int handsize);
 
