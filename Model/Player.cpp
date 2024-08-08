@@ -1,4 +1,4 @@
-#include "PLayer.h"
+#include "Player.h"
 #include "LinkedList.h"
 
 // default constructor
