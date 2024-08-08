@@ -64,9 +64,9 @@ void Hand::setTile(Colour colour, Shape shape, Tile* tile)
 void Hand::removeTile(Tile* tile)
 {
     // loops through array and adds tiles to linkedList
-    for (int i = 0; i < sizeof(*bagTiles) / sizeof(bagTiles[0]); ++i)
+    for (int i = 0; i < sizeof(tiles); ++i)
     {
-        tiles.addBack(bagTiles[i]);
+        tiles.addBack(this->tiles.at(i));
     }
 }
 
