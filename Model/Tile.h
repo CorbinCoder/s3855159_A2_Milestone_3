@@ -26,13 +26,13 @@ public:
    Tile(Colour colour, Shape shape);
 
    // Destructor
-   ~Tile();
+   //~Tile();
 
    // Copy Constructor
-   Tile(Tile &other);
+   // Tile(Tile &other);
 
    // Move Constructor
-   Tile(Tile &&other);
+   // Tile(Tile &&other);
 
    Colour getColour();
 

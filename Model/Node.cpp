@@ -15,22 +15,29 @@ Node::Node(Tile *tile, Node *next)
 // Copy constructor
 Node::Node(Node &other)
 {
-   this->tile = other.tile;
-   this->next = other.next;
+   this->tile = new Tile(*other.tile);
+   this->next = nullptr;
+}
+
+Node &Node::operator=(Node &other)
+{
+   delete this->tile;
+   this->tile = new Tile(*other.tile);
+   this->next = nullptr;
+   return *this;
 }
 
 // Destructor
 Node::~Node()
 {
    delete this->tile;
-   delete this->next;
+   // delete this->next;
 }
 
 // Return true if next node tile matches colour or shape
 bool Node::checkNextMatch()
 {
-   if (this->tile->getColour() == next->getTile()->getColour() 
-      || this->tile->getShape() == next->getTile()->getShape())
+   if (this->tile->getColour() == next->getTile()->getColour() || this->tile->getShape() == next->getTile()->getShape())
    {
       return true;
    }
