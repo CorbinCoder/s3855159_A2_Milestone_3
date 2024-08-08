@@ -1,6 +1,9 @@
 #ifndef ASSIGN2_FILEHANDLER_H
 #define ASSIGN2_FILEHANDLER_H
 
+#include "GetInput.h"
+#include <iostream>
+
 class FileHandler
 {
 public:

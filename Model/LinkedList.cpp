@@ -6,6 +6,7 @@ LinkedList::LinkedList()
 {
    head = nullptr;
    tail = nullptr;
+   length = 0;
 }
 
 // Destructor
@@ -38,6 +39,8 @@ Tile* LinkedList::find(Colour colour, Shape shape)
    {
       std::cout << "Error - List is empty" << std::endl;
    }
+
+   return NULL;
 }
 
 Tile* LinkedList::at(int i)
@@ -60,6 +63,8 @@ Tile* LinkedList::at(int i)
    {
       std::cout << "Error - List is empty" << std::endl;
    }
+
+   return NULL;
 }
 
 void LinkedList::remove(int i)
@@ -75,7 +80,7 @@ void LinkedList::remove(int i)
          if (this->length == i)
          {
 
-            Node* prev = temp;
+            // Node* prev = temp;
             temp->setNext(temp->getNext()->getNext());
          }
          temp->setNext(temp->getNext());
@@ -97,7 +102,7 @@ void LinkedList::printAll()
    {
       while (temp != nullptr && i <= this->length)
       {
-         std::cout << "Node #" << i 
+         std::cout << "Node #" << i
                      << " Colour: " << this->at(i)->getColour()
                      << " Shape: " << this->at(i)->getShape();
          temp->setNext(temp->getNext());
@@ -148,7 +153,7 @@ void LinkedList::addFront(Tile *tile)
 // Delete the first node
 void LinkedList::deleteFront()
 {
-   if (head = nullptr)
+   if (head == nullptr)
    {
       std::cout << "List is empty";
       return;
@@ -205,7 +210,7 @@ void LinkedList::deleteBack()
       }
 
       delete tail;
-      temp->getNext() == nullptr;
+      // temp->getNext() == nullptr; // Redundant - Add your logic for this comparison
       tail = temp;
       length--;
    }

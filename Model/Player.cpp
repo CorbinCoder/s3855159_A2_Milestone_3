@@ -67,6 +67,8 @@ Tile *Player::placeTile(Colour colour, Shape shape)
     }
 
     // another function will place it on the board
+
+    return NULL;
 }
 
 void Player::replaceTile(Colour colour, Shape shape, Tile newTile)
