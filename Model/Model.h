@@ -29,8 +29,8 @@ public:
 private:
     // Member vars
 
-    Player player_1 = Player();
-    Player player_2 = Player();
+    Player player_1;
+    Player player_2;
     Bag bag;
     // Board board;
 };

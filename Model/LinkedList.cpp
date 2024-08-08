@@ -16,19 +16,25 @@ LinkedList::~LinkedList()
    delete tail;
 }
 
+// Copy constructor
+LinkedList::LinkedList(LinkedList &other)
+{
+   this->head = other.head;
+   this->tail = other.tail;
+}
+
 // Methods
 
-Tile* LinkedList::find(Colour colour, Shape shape)
+Tile *LinkedList::find(Colour colour, Shape shape)
 {
-   Node* temp = new Node();
+   Node *temp = new Node();
    temp = this->head;
 
    if (temp != nullptr)
    {
       while (temp != nullptr)
       {
-         if (temp->getTile()->getColour() == colour
-         && temp->getTile()->getShape() == shape)
+         if (temp->getTile()->getColour() == colour && temp->getTile()->getShape() == shape)
          {
             return temp->getTile();
          }
@@ -43,9 +49,9 @@ Tile* LinkedList::find(Colour colour, Shape shape)
    return NULL;
 }
 
-Tile* LinkedList::at(int i)
+Tile *LinkedList::at(int i)
 {
-   Node* temp = new Node();
+   Node *temp = new Node();
    temp = this->head;
 
    if (temp != nullptr)
@@ -69,21 +75,55 @@ Tile* LinkedList::at(int i)
 
 void LinkedList::remove(int i)
 {
+   // find the node at the index
+   Node *temp = new Node();
+   temp = this->head;
 
-   Node* temp = new Node();
+   Node *prev = new Node();
+
+   if (prev != nullptr)
+   {
+      while (prev != nullptr)
+      {
+
+         if (this->length == (i - 1))
+         {
+
+            *prev->getNext() = *temp;
+
+            //  link it to next node
+            prev->setNext(temp->getNext());
+
+            // delete node
+            delete temp;
+            // temp->setNext(temp->getNext()->getNext());
+         }
+         // temp->setNext(temp->getNext());
+      }
+   }
+   else
+   {
+      std::cout << "Error - List is empty" << std::endl;
+   }
+}
+
+void LinkedList::replace(int i, Tile *newTile)
+{
+
+   // find the node at the index
+   Node *temp = new Node();
    temp = this->head;
 
    if (temp != nullptr)
    {
       while (temp != nullptr)
       {
+
          if (this->length == i)
          {
-
-            // Node* prev = temp;
-            temp->setNext(temp->getNext()->getNext());
+            //  replace it with newNode
+            temp->setTile(newTile);
          }
-         temp->setNext(temp->getNext());
       }
    }
    else
@@ -94,7 +134,7 @@ void LinkedList::remove(int i)
 
 void LinkedList::printAll()
 {
-   Node* temp = new Node();
+   Node *temp = new Node();
    temp = this->head;
    int i = 0;
 
@@ -103,8 +143,8 @@ void LinkedList::printAll()
       while (temp != nullptr && i <= this->length)
       {
          std::cout << "Node #" << i
-                     << " Colour: " << this->at(i)->getColour()
-                     << " Shape: " << this->at(i)->getShape();
+                   << " Colour: " << this->at(i)->getColour()
+                   << " Shape: " << this->at(i)->getShape();
          temp->setNext(temp->getNext());
          i++;
       }
@@ -118,7 +158,7 @@ void LinkedList::printAll()
 // Clear contents of LinkedList
 void LinkedList::clear()
 {
-   Node* temp = this->head;
+   Node *temp = this->head;
    head = head->getNext();
    delete temp;
 }
@@ -216,32 +256,32 @@ void LinkedList::deleteBack()
    }
 }
 
-Tile* LinkedList::getFront()
+Tile *LinkedList::getFront()
 {
    return this->head->getTile();
 }
 
-void LinkedList::setFront(Tile* tile)
+void LinkedList::setFront(Tile *tile)
 {
    this->head->setTile(tile);
 }
 
-Tile* LinkedList::getBack()
+Tile *LinkedList::getBack()
 {
    return this->tail->getTile();
 }
 
-void LinkedList::setBack(Tile* tile)
+void LinkedList::setBack(Tile *tile)
 {
    this->tail->setTile(tile);
 }
 
-Node* LinkedList::getHead()
+Node *LinkedList::getHead()
 {
    return this->head;
 }
 
-Node* LinkedList::getTail()
+Node *LinkedList::getTail()
 {
    return this->tail;
 }
