@@ -37,5 +37,4 @@ void addTile(Tile tile, int col, int row)
 void displayBoard()
 {
     // TODO
-    
 }

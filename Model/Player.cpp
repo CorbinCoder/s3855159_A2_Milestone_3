@@ -71,7 +71,7 @@ Player &Player::operator=(Player &other)
 
 // Used to initialize player data after instance
 // is initialized
-void Player::init(std::string name, int score, int position, int handSize)
+void Player::init(std::string name, Hand* hand, int score, int position)
 {
     this->name = name;
     this->hand = Hand();
