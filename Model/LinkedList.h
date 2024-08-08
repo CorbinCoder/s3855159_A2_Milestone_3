@@ -12,14 +12,16 @@ public:
    // Contructor(s)/Destructor
    LinkedList();
    ~LinkedList();
+   LinkedList(LinkedList &other);
 
    // Methods
    Tile *find(Colour colour, Shape shape); // Returns tile of node using colour and shape to search
    Tile *at(int i);                        // Returns tile of node using index to search
    void remove(int i);                     // Removes reference to tile at node using index to search
-   void printAll();                        // Prints the details of tile of each node in the list
-   void clear();                           // Clear the contents of the list
-   int size();                             // Returns the number of nodes in the list
+   void replace(int i, Tile *newTile);
+   void printAll(); // Prints the details of tile of each node in the list
+   void clear();    // Clear the contents of the list
+   int size();      // Returns the number of nodes in the list
 
    // Get/Set
    Tile *getFront();
@@ -37,7 +39,7 @@ private:
    // Member vars
    Node *head;
    Node *tail;
-   int length;
+   static int length;
 };
 
 #endif // ASSIGN2_LINKEDLIST_H

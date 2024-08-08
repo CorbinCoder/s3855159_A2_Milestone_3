@@ -40,12 +40,13 @@ void Controller::NewGame(Model model, View view)
 
     std::cout << std::endl
               << "Enter a name for player 1 (uppercase characters only)" << std::endl;
-    model.getPlayer(1).init(GetInput::getInput(GetInput::validateName), new Hand(6), 0, 1);
+    model.getPlayer(1).setName(GetInput::getInput(GetInput::validateName));
+
     model.drawHand(1);
 
     std::cout << std::endl
               << "Enter a name for player 2 (uppercase characters only)" << std::endl;
-    model.getPlayer(2).init(GetInput::getInput(GetInput::validateName), new Hand(6), 0, 2);
+    model.getPlayer(2).setName(GetInput::getInput(GetInput::validateName));
     model.drawHand(2);
 
     std::cout << std::endl

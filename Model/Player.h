@@ -8,7 +8,7 @@ class Player
 {
 private:
     std::string name;
-    Hand* hand;
+    Hand hand;
     int score;
     int position;
 
@@ -17,7 +17,7 @@ public:
     Player();
 
     // constructor
-    Player(std::string name, Hand* hand, int score, int position);
+    Player(std::string name, int handSize, int score, int position);
 
     // Destructor
     ~Player();
@@ -28,18 +28,20 @@ public:
     // Move Constructor
     Player(Player &&other);
 
-    void init(std::string name, Hand* hand, int score, int position);
+    void init(std::string name, int score, int position, int handSize);
 
     Tile *placeTile(Colour colour, Shape shape);
 
-    void replaceTile(Colour colour, Shape shape, Tile newTile);
+    void replaceTile(Colour colour, Shape shape, Tile *newTile);
 
-    void createHand();
+    void drawHand(Tile *tiles[]);
 
     // getters and setters
     std::string getName();
 
-    Hand* getHand();
+    void setName(std::string name);
+
+    Hand getHand();
 
     int getScore();
 

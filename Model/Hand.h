@@ -17,7 +17,7 @@ public:
     // Methods
 
     // Get/Set
-    Tile* getTile(Colour colour, Shape shape);
+    Tile *getTile(Colour colour, Shape shape);
     int getHandsize();
     void removeTile(Tile *tile);
     void addTile(Tile *tile);
