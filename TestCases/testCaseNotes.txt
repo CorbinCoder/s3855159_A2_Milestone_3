@@ -5,6 +5,9 @@
 (Optional) <testname>.save - Input save file to provide to the Qwirkle program if required by the test.
 (Optional) <testname>.expsave - Expected output saved game file.
 
+When saving the game to a file, please save it to a seperate file. Do not save it to testname.save because the test then cannot be repeated
+
+
 A test is run using the following sequence of commands.
 
 -./qwirkle < <testname>.input > <testname>.gameout
