@@ -5,24 +5,22 @@
 #include "../Model/Model.h"
 #include "Controller.h"
 
-#define EXIT_SUCCESS 0
-
-static Model model = Model();
-static View view = View();
-static Controller controller = Controller();
-
 int main(void)
 {
+    Model *model = new Model();
+    View *view = new View();
+    Controller *controller = new Controller();
+
     while (true)
     {
-        view.printWelcomeMessage();
-        controller.Menu(view, model);
-        return;
+        view->printWelcomeMessage();
+        controller->Menu(*view, *model);
+        break;
     }
 
-    delete &view;
-    delete &model;
-    delete &controller;
+    delete view;
+    delete model;
+    delete controller;
 
     return EXIT_SUCCESS;
 }

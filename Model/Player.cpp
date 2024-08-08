@@ -7,7 +7,7 @@ Player::Player()
 }
 
 // constructor
-Player::Player(std::string name, Hand hand, int score, int position)
+Player::Player(std::string name, Hand *hand, int score, int position)
 {
     this->name = name;
     this->hand = hand;
@@ -18,18 +18,18 @@ Player::Player(std::string name, Hand hand, int score, int position)
 // Destructor
 Player::~Player()
 {
-    delete &this->name;
-    delete &this->hand;
-    delete &this->score;
-    delete &this->position;
-    // delete[] &this->hand; // this->hand is a class instance of LinkedList, not a pointer
+    // delete this->name;
+    delete this->hand;
+    // delete this->score;
+    // delete this->position;
+    //  delete[] &this->hand; // this->hand is a class instance of LinkedList, not a pointer
 }
 
 // Copy Constructor
 Player::Player(Player &other)
 {
     name = other.name;
-    hand = Hand(other.hand);
+    hand = other.hand;
     score = other.score;
     position = other.position;
 }
@@ -39,17 +39,17 @@ Player::Player(Player &other)
 Player::Player(Player &&other)
 {
     name = other.name;
-    hand = Hand(other.hand);
+    hand = other.hand;
     score = other.score;
     position = other.position;
 }
 
 // Used to initialize player data after instance
 // is initialized
-void Player::init(std::string name, Hand hand, int score, int position)
+void Player::init(std::string name, Hand *hand, int score, int position)
 {
     this->name = name;
-    this->hand = Hand(hand);
+    this->hand = hand;
     this->score = score;
     this->position = position;
 }
@@ -58,12 +58,12 @@ Tile *Player::placeTile(Colour colour, Shape shape)
 {
 
     // check tile is in player's hand
-    Tile *selectedTile = hand.getTile(colour, shape);
+    Tile *selectedTile = this->hand->getTile(colour, shape);
 
     if (selectedTile != nullptr)
     {
         // remove tile from player's hand
-        hand.removeTile(selectedTile);
+        this->hand->removeTile(selectedTile);
     }
 
     // another function will place it on the board
@@ -90,7 +90,7 @@ std::string Player::getName()
     return this->name;
 }
 
-Hand Player::getHand()
+Hand *Player::getHand()
 {
     return this->hand;
 }
