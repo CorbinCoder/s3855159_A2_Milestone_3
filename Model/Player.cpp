@@ -26,13 +26,13 @@ Player::Player(std::string name, int handSize, int score, int position)
 //}
 
 // Copy Constructor
-// Player::Player(Player &other)
-// {
-//     name = other.name;
-//     hand = Hand(other.hand);
-//     score = other.score;
-//     position = other.position;
-// }
+Player::Player(Player &other)
+{
+    name = other.name;
+    hand = Hand(other.hand);
+    score = other.score;
+    position = other.position;
+}
 
 // Move Constructor
 // run when std::move is used

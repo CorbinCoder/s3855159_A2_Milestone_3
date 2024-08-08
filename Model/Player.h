@@ -23,7 +23,7 @@ public:
     // ~Player();
 
     // Copy Constructor
-    // Player(Player &other);
+    Player(Player &other);
 
     // Move Constructor
     // Player(Player &&other);

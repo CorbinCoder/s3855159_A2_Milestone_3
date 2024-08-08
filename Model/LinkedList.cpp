@@ -5,22 +5,93 @@
 LinkedList::LinkedList()
 {
    head = nullptr;
-   tail = nullptr;
+   // tail = nullptr;
    length = 0;
 }
 
 // Destructor
 LinkedList::~LinkedList()
 {
+   // loop through all the nodes?
+
+   while (head != tail)
+   {
+      this->deleteBack();
+   }
    delete head;
-   delete tail;
 }
 
 // Copy constructor
 LinkedList::LinkedList(LinkedList &other)
 {
+   this->head = nullptr;
+   this->tail = nullptr;
+   Node *temp = new Node();
+   temp = other.head;
+
+   while (temp != nullptr)
+   {
+      this->addBack(new Tile(*temp->getTile()));
+      temp = temp->getNext();
+   }
+}
+
+// move constructor
+LinkedList::LinkedList(LinkedList &&other)
+{
    this->head = other.head;
    this->tail = other.tail;
+   other.head = nullptr;
+   other.tail = nullptr;
+}
+
+// move operator
+LinkedList &LinkedList::operator=(LinkedList &&other)
+{
+
+   while (head != tail)
+   {
+      this->deleteBack();
+   }
+   delete head;
+
+   this->head = other.head;
+   this->tail = other.tail;
+   other.head = nullptr;
+   other.tail = nullptr;
+   return *this;
+}
+
+// copy assignment operator
+LinkedList &LinkedList::operator=(LinkedList &other)
+{
+   if (this != &other)
+   {
+
+      // delete all the nodes
+      while (head != tail)
+      {
+         this->deleteBack();
+      }
+      delete head;
+      this->head = nullptr;
+      this->tail = nullptr;
+
+      // reinstate all the nodes
+
+      Node *temp = new Node();
+      temp = other.head;
+
+      while (temp != nullptr)
+      {
+         this->addBack(new Tile(*temp->getTile()));
+         temp = temp->getNext();
+      }
+      // checks that original and copy have same memory address
+
+      // creates new array, copies values and destroys old array
+   }
+   return *this;
 }
 
 // Methods
@@ -179,7 +250,7 @@ void LinkedList::addFront(Tile *tile)
    if (head == nullptr)
    {
       this->head = temp;
-      this->tail = temp;
+      // this->tail = temp;
       length++;
    }
    else
@@ -200,6 +271,7 @@ void LinkedList::deleteFront()
    }
    else if (head == tail)
    {
+      delete head;
       head = nullptr;
       tail = nullptr;
       length--;
@@ -239,6 +311,13 @@ void LinkedList::deleteBack()
    if (head == nullptr)
    {
       return;
+   }
+   else if (head == tail)
+   {
+      delete head;
+      this->head = nullptr;
+      this->tail = nullptr;
+      length--;
    }
    else
    {
