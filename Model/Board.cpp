@@ -10,18 +10,18 @@ Board::Board(Height height, Width Width)
 
 // Define the destructor
 Board::~Board()
-{  
+{
 }
 
 // Define the copy constructor
-Board::Board(Board& board)
+Board::Board(Board &board)
 {
     this->height = board.height;
     this->width = board.width;
 }
 
 // Define the move constructor
-Board::Board(Board&& board)
+Board::Board(Board &&board)
 {
     this->height = board.height;
     this->width = board.width;
@@ -37,5 +37,4 @@ void addTile(Tile tile, int col, int row)
 void displayBoard()
 {
     // TODO
-    
 }

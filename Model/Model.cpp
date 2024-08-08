@@ -16,7 +16,7 @@ Model::Model(std::string player_1_name, std::string player_2_name)
 // Model::Model(std::string player_1_name, std::string player_2_name, Bag bag) : player_1(player_1_name, 6, 0, 1), player_2(player_2_name, 6, 0, 2)
 // {
 //     this->bag = bag;
-//     // Board board;
+// Board board;
 // }
 
 // Model::Model(Model &other) : player_1(other.player_1), player_2(other.player_1), bag(other.bag)
