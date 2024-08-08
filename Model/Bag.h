@@ -4,28 +4,23 @@
 #include "LinkedList.h"
 #include "Tile.h"
 
-
 class Bag
 {
-    public:
-
+public:
     // Contructor(s)/Destructor
     Bag();
     Bag(int numeach);
-    Bag(Bag &other);
-    ~Bag();
+    // Bag(Bag &other);
+    //~Bag();
 
     // Methods
     void New(int numeach); // Creates a new, ordered bag of tiles
-    Tile* Draw(); // Draw a tile from the bag, and remove it from the bag
-    void Shuffle(); // Shuffle the contents of the bag
+    Tile *Draw();          // Draw a tile from the bag, and remove it from the bag
+    void Shuffle();        // Shuffle the contents of the bag
 
-
-    private:
-
+private:
     // Member vars
-    LinkedList* tiles;
-
+    LinkedList tiles;
 };
 
 #endif

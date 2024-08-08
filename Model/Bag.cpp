@@ -14,16 +14,16 @@ Bag::Bag(int numeach)
 }
 
 // Copy constructor
-Bag::Bag(Bag &other)
-{
-    this->tiles = other.tiles;
-}
+// Bag::Bag(Bag &other)
+// {
+//     this->tiles = other.tiles;
+// }
 
 // Destructor
-Bag::~Bag()
-{
-    delete tiles;
-}
+// Bag::~Bag()
+// {
+//     delete tiles;
+// }
 
 // Create a new bag - set number of each tile
 void Bag::New(int numeach)
@@ -37,7 +37,7 @@ void Bag::New(int numeach)
         {
             for (int i = 0; i < numeach; i++)
             {
-                tiles->addFront(new Tile(colours[i], shapes[j]));
+                tiles.addFront(new Tile(colours[i], shapes[j]));
             }
         }
     }
@@ -46,9 +46,9 @@ void Bag::New(int numeach)
 // Shuffle the bag - randomises tile order
 void Bag::Shuffle()
 {
-    for (int i = 0; i < this->tiles->size(); i++)
+    for (int i = 0; i < this->tiles.size(); i++)
     {
-        Node *ptr = tiles->getHead();
+        Node *ptr = tiles.getHead();
         Node *prev = nullptr;
 
         while (ptr && ptr->getNext())
@@ -69,9 +69,9 @@ void Bag::Shuffle()
 // Draw a tile from the bag - draws from the top
 Tile *Bag::Draw()
 {
-    Tile *temp = this->tiles->getFront();
+    Tile *temp = this->tiles.getFront();
 
-    this->tiles->deleteFront();
+    this->tiles.deleteFront();
 
     return temp;
-};
+}
