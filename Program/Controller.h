@@ -15,13 +15,18 @@ public:
     ~Controller();
 
     // Methods
-    void Menu(View view);
-    void NewGame(View view);
-    void Quit(std::string out);
+    void menu(View view);
+    void newGame(View view);
+    void quit(std::string out);
+    void gameplay();
+    void displayTurn();
+    void qwirkle();
+    void endGame();
+    void calculateScore();
 
 private:
     // Member vars
-    Model* model;
+    Model *model;
 };
 
 #endif

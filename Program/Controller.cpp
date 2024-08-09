@@ -8,7 +8,7 @@ Controller::~Controller()
 {
 }
 
-void Controller::Menu(View view)
+void Controller::menu(View view)
 {
     view.printMenu();
     std::string userChoiceString = GetInput::getInput(GetInput::validateUserChoice);
@@ -17,32 +17,32 @@ void Controller::Menu(View view)
     switch (userChoiceInteger)
     {
     case 1:
-        NewGame(view);
+        newGame(view);
         break;
     case 2:
         FileHandler::loadGame();
     case 3:
         break;
     case 4:
-        Quit("OUT URL");
+        quit("OUT URL");
         break;
     }
 }
 
-void Controller::NewGame(View view)
+void Controller::newGame(View view)
 {
     std::cout << std::endl
               << "Starting a New Game" << std::endl;
 
-    // model.getBoard().New(11, 11);
-    // model.getBag().New(4);
-    // model.getBag().Shuffle();
+    model.getBoard().New(11, 11);
+    model.getBag().New(4);
+    model.getBag().Shuffle();
 
     std::cout << std::endl
               << "Enter a name for player 1 (uppercase characters only)" << std::endl;
-    
+
     std::string player1Name = GetInput::getInput(GetInput::validateName);
-    
+
     // model.drawHand(1);
 
     std::cout << std::endl
@@ -55,7 +55,30 @@ void Controller::NewGame(View view)
               << "Let's Play!" << std::endl;
 }
 
-void Controller::Quit(std::string out)
+// the gameplay loop
+void Controller::gameplay()
+{
+}
+
+void Controller::displayTurn()
+{
+}
+
+void Controller::qwirkle()
+{
+}
+
+//
+void Controller::endGame()
+{
+}
+
+//updates score at the end of every turn
+void Controller::calculateScore()
+{
+}
+
+void Controller::quit(std::string out)
 {
     // Save game state to file
     // Save();
