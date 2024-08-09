@@ -2,11 +2,8 @@
 #include "LinkedList.h"
 
 // Default Constructor
-LinkedList::LinkedList()
+LinkedList::LinkedList() : head(nullptr), tail(nullptr), length(0)
 {
-   head = nullptr;
-   // tail = nullptr;
-   length = 0;
 }
 
 // Destructor
@@ -22,46 +19,17 @@ LinkedList::~LinkedList()
 }
 
 // Copy constructor
-LinkedList::LinkedList(LinkedList &other)
+LinkedList::LinkedList(LinkedList &other) : head(nullptr), tail(nullptr)
 {
-   this->head = nullptr;
-   this->tail = nullptr;
-   Node *temp = new Node();
-   temp = other.head;
+
+   Node *temp = other.head;
 
    while (temp != nullptr)
    {
-      this->addBack(new Tile(*temp->getTile()));
+      this->addBack(new Tile(*(temp->getTile())));
       temp = temp->getNext();
    }
 }
-
-// move constructor
-LinkedList::LinkedList(LinkedList &&other)
-{
-   this->head = other.head;
-   this->tail = other.tail;
-   other.head = nullptr;
-   other.tail = nullptr;
-}
-
-// move operator
-LinkedList &LinkedList::operator=(LinkedList &&other)
-{
-
-   while (head != tail)
-   {
-      this->deleteBack();
-   }
-   delete head;
-
-   this->head = other.head;
-   this->tail = other.tail;
-   other.head = nullptr;
-   other.tail = nullptr;
-   return *this;
-}
-
 // copy assignment operator
 LinkedList &LinkedList::operator=(LinkedList &other)
 {
@@ -79,12 +47,11 @@ LinkedList &LinkedList::operator=(LinkedList &other)
 
       // reinstate all the nodes
 
-      Node *temp = new Node();
-      temp = other.head;
+      Node *temp = other.head;
 
       while (temp != nullptr)
       {
-         this->addBack(new Tile(*temp->getTile()));
+         this->addBack(new Tile(*(temp->getTile())));
          temp = temp->getNext();
       }
       // checks that original and copy have same memory address
@@ -93,13 +60,38 @@ LinkedList &LinkedList::operator=(LinkedList &other)
    }
    return *this;
 }
+// move constructor
+LinkedList::LinkedList(LinkedList &&other) noexcept
+    : head(other.head), tail(other.tail)
+{
+   other.head = nullptr;
+   other.tail = nullptr;
+}
+
+// move operator
+LinkedList &LinkedList::operator=(LinkedList &&other) noexcept
+{
+   if (this != &other)
+   {
+      while (head != tail)
+      {
+         this->deleteBack();
+      }
+      delete head;
+
+      this->head = other.head;
+      this->tail = other.tail;
+      other.head = nullptr;
+      other.tail = nullptr;
+   }
+   return *this;
+}
 
 // Methods
 
 Tile *LinkedList::find(Colour colour, Shape shape)
 {
-   Node *temp = new Node();
-   temp = this->head;
+   Node *temp = this->head;
 
    if (temp != nullptr)
    {
@@ -122,55 +114,46 @@ Tile *LinkedList::find(Colour colour, Shape shape)
 
 Tile *LinkedList::at(int i)
 {
-   Node *temp = new Node();
-   temp = this->head;
-
-   if (temp != nullptr)
+   // create node to loop through nodes
+   Node *temp = this->head;
+   for (int j = 0; j < i && temp != nullptr; ++j)
    {
-      while (temp != nullptr)
-      {
-         if (i == this->length)
-         {
-            return temp->getTile();
-         }
-         temp->setNext(temp->getNext());
-      }
+      temp = temp->getNext();
    }
-   else
+
+   if (temp == nullptr)
    {
+
       std::cout << "Error - List is empty" << std::endl;
+      return nullptr;
    }
 
-   return NULL;
+   return temp->getTile();
 }
 
 void LinkedList::remove(int i)
 {
-   // find the node at the index
-   Node *temp = new Node();
-   temp = this->head;
-
-   Node *prev = new Node();
-
-   if (prev != nullptr)
+   if (i == 0)
    {
-      while (prev != nullptr)
-      {
+      this->deleteFront();
+      return;
+   }
+   if (i == length - 1)
+   {
+      this->deleteBack();
+      return;
+   }
+   Node *previous = this->head;
 
-         if (this->length == (i - 1))
-         {
-
-            *prev->getNext() = *temp;
-
-            //  link it to next node
-            prev->setNext(temp->getNext());
-
-            // delete node
-            delete temp;
-            // temp->setNext(temp->getNext()->getNext());
-         }
-         // temp->setNext(temp->getNext());
-      }
+   for (int j = 0; j < (i - 1) && previous != nullptr; ++j)
+   {
+      previous = previous->getNext();
+   }
+   if (previous != nullptr)
+   {
+      Node *temp = previous->getNext();
+      previous->setNext(temp->getNext());
+      delete temp;
    }
    else
    {
@@ -182,25 +165,19 @@ void LinkedList::replace(int i, Tile *newTile)
 {
 
    // find the node at the index
-   Node *temp = new Node();
-   temp = this->head;
-
-   if (temp != nullptr)
+   Node *temp = this->head;
+   for (int j = 0; j < i && temp != nullptr; ++j)
    {
-      while (temp != nullptr)
-      {
-
-         if (this->length == i)
-         {
-            //  replace it with newNode
-            temp->setTile(newTile);
-         }
-      }
+      temp = temp->getNext();
    }
-   else
+
+   if (temp == nullptr)
    {
+
       std::cout << "Error - List is empty" << std::endl;
+      return;
    }
+   temp->setTile(newTile);
 }
 
 void LinkedList::printAll()
@@ -229,9 +206,13 @@ void LinkedList::printAll()
 // Clear contents of LinkedList
 void LinkedList::clear()
 {
-   Node *temp = this->head;
-   head = head->getNext();
-   delete temp;
+   while (head != tail)
+   {
+      this->deleteBack();
+   }
+   delete head;
+   head = nullptr;
+   tail = nullptr;
 }
 
 // Get/Set
@@ -240,7 +221,7 @@ int LinkedList::size()
    return this->length;
 }
 
-// Add node to first position
+// Add node to first position (takes ownership of ptr)
 void LinkedList::addFront(Tile *tile)
 {
    Node *temp = new Node();
@@ -250,7 +231,7 @@ void LinkedList::addFront(Tile *tile)
    if (head == nullptr)
    {
       this->head = temp;
-      // this->tail = temp;
+      this->tail = temp;
       length++;
    }
    else
@@ -284,7 +265,7 @@ void LinkedList::deleteFront()
    }
 }
 
-// Add node to end position
+// Add node to end position (takes ownership of ptr)
 void LinkedList::addBack(Tile *tile)
 {
    Node *temp = new Node();

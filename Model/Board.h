@@ -9,29 +9,29 @@ typedef int Width;
 // Declare the Board class
 class Board
 {
-    private:
-        // Declare the board dimension fields
-        Height height;
-        Width width;
+private:
+    // Declare the board dimension fields
+    Height height;
+    Width width;
 
-    public:
-        // Declare the constructor
-        Board(Height height, Width Width);
+public:
+    // Declare the constructor
+    Board(Height height, Width Width);
 
-        // Declare the copy constructor
-        Board(Board& board);
+    // Declare the copy constructor
+    Board(Board &board);
 
-        // Declare the move constructor
-        Board(Board&& board);
+    // Declare the move constructor
+    Board(Board &&board);
 
-        // Add Tile method
-        void addTile(Tile tile, int col, int row);
+    // Add Tile method
+    void addTile(Tile tile, int col, int row);
 
-        // Display board method
-        void displayBoard();
+    // Display board method
+    void displayBoard();
 
-        // Declare the destructor
-        ~Board();
+    // Declare the destructor
+    ~Board();
 };
 
 #endif // ASSIGN2_BOARD_H

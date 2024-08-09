@@ -13,9 +13,9 @@ public:
    LinkedList();
    ~LinkedList();
    LinkedList(LinkedList &other);
-   LinkedList(LinkedList &&other);
+   LinkedList(LinkedList &&other) noexcept;
    LinkedList &operator=(LinkedList &other);
-   LinkedList &operator=(LinkedList &&other);
+   LinkedList &operator=(LinkedList &&other) noexcept;
 
    // Methods
    Tile *find(Colour colour, Shape shape); // Returns tile of node using colour and shape to search
@@ -40,9 +40,10 @@ public:
 
 private:
    // Member vars
+   // Actual memory
    Node *head;
    Node *tail;
    int length;
 };
 
-#endif // ASSIGN2_LINKEDLIST_H
+#endif // AS

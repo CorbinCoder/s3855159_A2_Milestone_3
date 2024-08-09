@@ -30,12 +30,12 @@ Hand::Hand(int handsize)
 
 Tile *Hand::getTile(Colour colour, Shape shape)
 {
-    for (unsigned int i = 0; i < sizeof(this->tiles); i++)
+    for (unsigned int i = 0; i < this->tiles.size(); i++)
     {
-        // if (this->tiles[i].getColour() == colour && this->tiles[i].getShape() == shape)
-        // {
-        //     return &this->tiles[i];
-        // }
+        if (this->tiles.at(i)->getColour() == colour && this->tiles.at(i)->getShape() == shape)
+        {
+             return this->tiles.at(i);
+        }
     }
 
     return NULL;
@@ -43,7 +43,7 @@ Tile *Hand::getTile(Colour colour, Shape shape)
 
 void Hand::setTile(Colour colour, Shape shape, Tile *newtile)
 {
-    for (unsigned int i = 0; i < sizeof(this->tiles); i++)
+    for (unsigned int i = 0; i < this->tiles.size(); i++)
     {
         if (this->tiles.at(i)->getColour() == colour && this->tiles.at(i)->getShape() == shape)
         {
