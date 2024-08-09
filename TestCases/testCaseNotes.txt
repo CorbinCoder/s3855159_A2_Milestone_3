@@ -24,13 +24,11 @@ a suitable filename in place of <actual_gamesave>.
 
 ASSUMPTIONS: 
 
-The board will be 11 x 11 by default (though we can test for making a differently sized board)
+The board will be 11 x 11 by default (unless a different size is required for a certain test)
 
 If necessary, make a test class specifically for executing game logic acording to test instruction
 
 STANDARD CASES:
-
-enterNames - Test case for entering player names
 
 EmptyBoard - Test Case for displaying an empty board
 
@@ -47,8 +45,6 @@ scoreShapeQwirkle - Test case for getting a qwirkle of 6 shapes
 scoreColourQwirkle - Test case for getting a qwirkle of 6 colours
 
 twoTurns - Test case for both players playing a turn
-
-SaveLoadGame - Test case for saving and loading game 
 
 
 
