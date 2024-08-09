@@ -52,11 +52,13 @@ ERROR CASES:
 
 tileOutOfBounds - Test case for placing a tile out of bounds of the board
  
-rowOverSix - Test case for more than 6 tiles in a row 
+adjacentDuplicate - Test case for placing a duplicate tile in the same row
 
 alreadyFullSpot - Test case for player placing a tile on a spot that already has a tile in it
 
 illegalTilePlace - Test case for placing a tile next to another tile that does not share colour or shape 
+
+tileNotInHand - Test case for placing a tile that does not exist in the player's hand
  
 
  
