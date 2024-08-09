@@ -1,28 +1,23 @@
 #include "Node.h"
 
 // Default Constructor
-Node::Node()
+Node::Node() : next(nullptr)
 {
 }
 
 // Regular constructor
-Node::Node(Tile *tile, Node *next)
+Node::Node(Tile *tile, Node *next) : tile(tile), next(next)
 {
-   this->tile = tile;
-   this->next = next;
 }
 
 // Copy constructor
-Node::Node(Node &other)
+Node::Node(const Node &other) : tile(other.tile), next(nullptr)
 {
-   this->tile = new Tile(*other.tile);
-   this->next = nullptr;
 }
 
-Node &Node::operator=(Node &other)
+Node &Node::operator=(const Node &other)
 {
-   delete this->tile;
-   this->tile = new Tile(*other.tile);
+   this->tile = other.tile;
    this->next = nullptr;
    return *this;
 }
@@ -30,7 +25,6 @@ Node &Node::operator=(Node &other)
 // Destructor
 Node::~Node()
 {
-   delete this->tile;
    // delete this->next;
 }
 
@@ -49,26 +43,26 @@ bool Node::checkNextMatch()
 
 void Node::clear()
 {
-   delete this->tile;
+   this->tile.reset();
 }
 
 // Get/Set
 Tile *Node::getTile()
 {
-   return this->tile;
+   return this->tile.get();
 }
 
 void Node::setTile(Tile *tile)
 {
-   this->tile = tile;
+   this->tile.reset(tile);
 }
 
 Node *Node::getNext()
 {
-   return this->next;
+   return this->next.get();
 }
 
 void Node::setNext(Node *next)
 {
-   this->next = next;
+   this->next.reset(next);
 }

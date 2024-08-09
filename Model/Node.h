@@ -2,6 +2,7 @@
 #define ASSIGN2_NODE_H
 
 #include "Tile.h"
+#include <memory>
 #include "../Utilities/TileCodes.h"
 
 class Node
@@ -11,8 +12,8 @@ public:
 
    Node();
    Node(Tile *tile, Node *next);
-   Node(Node &other);
-   Node &operator=(Node &other);
+   Node(const Node &other);
+   Node &operator=(const Node &other);
    ~Node();
 
    // Methods
@@ -31,8 +32,8 @@ public:
 private:
    // Member vars
 
-   Tile *tile;
-   Node *next;
+   std::shared_ptr<Tile> tile;
+   std::shared_ptr<Node> next;
 };
 
 #endif // ASSIGN2_NODE_H
