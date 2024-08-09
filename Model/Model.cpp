@@ -5,6 +5,7 @@ Model::Model()
     // this->bag = Bag();
 }
 
+
 Model::Model(std::string player_1_name, std::string player_2_name)
 {
     this->player1 = new Player(player_1_name);
@@ -58,6 +59,7 @@ Player *Model::getPlayer(int pos)
     return player2;
 }
 
+// Fix this
 // Bag Model::getBag()
 // {
 //     return this->bag;
@@ -84,6 +86,8 @@ Player *Model::getPlayer(int pos)
 //         std::cout << "Error - player position is invalid" << std::endl;
 //     }
 // }
+
+
 
 // void Model::setBag(Bag bag)
 // {

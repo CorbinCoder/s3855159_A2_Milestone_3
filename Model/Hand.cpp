@@ -12,6 +12,13 @@ Hand::Hand(int handsize)
 }
 
 // Copy constructor
+Hand::Hand(Hand &other)
+
+{
+    this->handsize = handsize;
+}
+
+// Copy constructor
 // Hand::Hand(Hand &other)
 // {
 //     this->handsize = other.handsize;
@@ -19,10 +26,10 @@ Hand::Hand(int handsize)
 // }
 
 // Destructor
-// Hand::~Hand()
-// {
-//     tiles.clear();
-// }
+Hand::~Hand()
+{
+    tiles.clear();
+}
 
 // Methods
 
@@ -41,7 +48,7 @@ Tile *Hand::getTile(Colour colour, Shape shape)
     return NULL;
 }
 
-void Hand::setTile(Colour colour, Shape shape, Tile *newtile)
+void Hand::setTile(Colour colour, Shape shape, Tile* tile)
 {
     for (unsigned int i = 0; i < this->tiles.size(); i++)
     {
@@ -54,28 +61,16 @@ void Hand::setTile(Colour colour, Shape shape, Tile *newtile)
     }
 }
 
-void Hand::removeTile(Tile *tile)
-{
-    // find the position tile is at
-    for (int i = 0; i < sizeof(this->tiles); i++)
-    {
-        if (this->tiles.at(i)->getColour() == tile->getColour() && this->tiles.at(i)->getShape() == tile->getShape())
-        {
-            tiles.remove(i);
-        }
-    }
-}
-
-void Hand::drawHand(Tile *bagTiles[])
+void Hand::removeTile(Tile* tile)
 {
     // loops through array and adds tiles to linkedList
-    for (int i = 0; i < sizeof(*bagTiles) / sizeof(bagTiles[0]); ++i)
+    for (int i = 0; i < sizeof(tiles); ++i)
     {
-        tiles.addBack(bagTiles[i]);
+        tiles.addBack(this->tiles.at(i));
     }
 }
 
-void Hand::addTile(Tile *tile)
+void Hand::addTile(Tile* tile)
 {
     this->tiles.addBack(tile);
 }

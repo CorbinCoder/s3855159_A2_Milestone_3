@@ -21,15 +21,6 @@ public:
 
     Player(std::string name);
 
-    // Destructor
-    // ~Player();
-
-    // Copy Constructor
-    // Player(const Player &other);
-
-    // Move Constructor
-    // Player(Player &&other);
-
     Tile *placeTile(Colour colour, Shape shape);
 
     void replaceTile(Colour colour, Shape shape, Tile *newTile);
@@ -41,7 +32,7 @@ public:
 
     void setName(std::string name);
 
-    Hand getHand();
+    Hand* getHand();
 
     int getScore();
 
