@@ -36,9 +36,9 @@ PlaceTile - Test Case for displaying board with a certain tile on it
 
 ReplaceTile - Test case for replacing a tile 
  
-EndGameNoSpaces - Test case for filling in the last spot in a board. The game should end 
+EndGameNoSpaces - Test case for filling in the last spot in a board. The game should end. (For simplicity the board is 4x4)
 
-EndGameNoTiles - Test case for running out of tiles in the bag. The game should end.
+EndGameNoTiles - Test case for running out of tiles. The game should end. (For simplicity there is only of each tile)
 
 scoreShapeQwirkle - Test case for getting a qwirkle of 6 shapes 
 
