@@ -16,6 +16,8 @@ public:
     static bool validateUserChoice(std::string userChoiceString);
     static bool validateName(std::string nameString);
     static bool validateFileName(std::string fileName);
+    bool GetInput::validatePlaceCommand(std::string command);
+    bool GetInput::validateReplaceCommand(std::string command);
 
 private:
     static bool isInteger(std::string &s);

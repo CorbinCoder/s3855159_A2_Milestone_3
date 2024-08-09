@@ -5,17 +5,11 @@
 #include "../Model/Model.h"
 #include "Controller.h"
 
-static View view = View();
 static Controller controller = Controller();
 
 int main(void)
 {
-    while (true)
-    {
-        view.printWelcomeMessage();
-        controller.Menu(view);
-        break;
-    }
+    controller.menu();
 
     // delete &view;
     // delete &model;

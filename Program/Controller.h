@@ -15,11 +15,10 @@ public:
     ~Controller();
 
     // Methods
-    void menu(View view);
-    void newGame(View view);
+    void menu();
+    void newGame();
     void quit(std::string out);
     void gameplay();
-    void displayTurn();
     void qwirkle();
     void endGame();
     void calculateScore();

@@ -176,6 +176,14 @@ std::vector<int> GetInput::validateBoardSizes(std::string boardSizes)
     return boardSizesInt;
 }
 
+bool GetInput::validatePlaceCommand(std::string command)
+{
+}
+
+bool GetInput::validateReplaceCommand(std::string command)
+{
+}
+
 bool GetInput::validateBoardState(std::string boardState, int width, int height)
 {
     // Board State: All tiles currently placed on the board should appear as a list of tile@position. <tile_letter><tile_number>@<row><column>,

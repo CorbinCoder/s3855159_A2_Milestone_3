@@ -2,15 +2,16 @@
 #define ASSIGN2_VIEW_H
 #include <iostream>
 
-
 class View
 {
-    public: 
-    
+public:
     void printWelcomeMessage();
     void printMenu();
-    
-    private:
+    void displayTurn();
+    void printSingleLine(std::string message);
+    void printMultiLine(std::string message);
+
+private:
 };
 
 #endif
