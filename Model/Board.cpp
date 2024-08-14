@@ -1,6 +1,13 @@
 #include <vector>
 #include "Board.h"
 
+// Default constructor
+Board::Board()
+{
+    this->height = 26;
+    this->width = 26;
+}
+
 // Define the constructor
 Board::Board(Height height, Width Width)
 {

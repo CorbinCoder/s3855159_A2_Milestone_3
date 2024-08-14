@@ -40,10 +40,9 @@ public:
 
 private:
    // Member vars
-   // Actual memory
    Node *head;
    Node *tail;
    int length;
 };
 
-#endif // AS
+#endif

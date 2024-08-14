@@ -4,6 +4,7 @@
 #include "Tile.h"
 #include "Player.h"
 #include "Bag.h"
+#include "Board.h"
 
 class Model
 {
@@ -12,7 +13,7 @@ public:
 
     Model();
     Model(std::string player_1_name, std::string player_2_name);
-    Model(std::string player_1_name, std::string player_2_name, Bag bag);
+    Model(std::string player_1_name, std::string player_2_name, Bag bag, Board board);
     Model(Model &other);
     ~Model();
 
@@ -21,19 +22,19 @@ public:
 
     // Get/Set
     Player* getPlayer(int pos);
-    Bag getBag();
+    Bag* getBag();
     void setPlayer(int pos, Player player);
     void setBag(Bag bag);
-    // Board getBoard();
-    // void setBoard(Board board);
+    Board getBoard();
+    void setBoard(Board board);
 
 private:
     // Member vars
 
-    Player* player1;
-    Player* player2;
-    // Bag bag;
-    // Board board;
+    Player* player_1;
+    Player* player_2;
+    Bag* bag;
+    Board* board;
 };
 
 #endif

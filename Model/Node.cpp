@@ -11,7 +11,7 @@ Node::Node(Tile *tile, Node *next) : tile(tile), next(next)
 }
 
 // Copy constructor
-Node::Node(const Node &other) : tile(other.tile), next(nullptr)
+Node::Node(const Node &other) : tile(other.tile), next(other.next)
 {
 }
 
@@ -25,7 +25,7 @@ Node &Node::operator=(const Node &other)
 // Destructor
 Node::~Node()
 {
-   // delete this->next;
+   delete &this->next;
 }
 
 // Return true if next node tile matches colour or shape

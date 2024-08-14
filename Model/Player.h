@@ -8,7 +8,7 @@ class Player
 {
 private:
     std::string name;
-    Hand hand;
+    Hand* hand;
     int score;
     int position;
 
@@ -25,7 +25,7 @@ public:
 
     void replaceTile(Colour colour, Shape shape, Tile *newTile);
 
-    void drawHand(Tile *tiles[]);
+    void drawHand(Tile* tiles[]);
 
     // getters and setters
     std::string getName();

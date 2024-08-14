@@ -15,7 +15,7 @@ Player::Player(std::string name)
 Player::Player(std::string name, int handSize, int score, int position)
 {
     this->name = name;
-    this->hand = Hand(handSize);
+    this->hand = new Hand(handSize);
     this->score = score;
     this->position = position;
 }
@@ -27,7 +27,7 @@ Player::Player(std::string name, int handSize, int score, int position)
 Tile *Player::placeTile(Colour colour, Shape shape)
 {
     // check tile is in player's hand
-    Tile *selectedTile = hand.getTile(colour, shape);
+    Tile *selectedTile = hand->getTile(colour, shape);
 
     if (selectedTile != nullptr)
     {
@@ -47,10 +47,13 @@ void Player::replaceTile(Colour colour, Shape shape, Tile *newTile)
 }
 
 // array length meant to be 6 but left indefined in case of updates to rules in milestone 3
-void Player::drawHand(Tile *tiles[])
+void Player::drawHand(Tile* tiles[])
 {
     // passes tiles to hand
-    this->hand->drawHand(tiles);
+    for (int i = 0; i < sizeof(&tiles); i++) 
+    {
+        this->hand->addTile(tiles[i]);
+    }
 }
 
 // getters and setters

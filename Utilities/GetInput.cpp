@@ -178,10 +178,14 @@ std::vector<int> GetInput::validateBoardSizes(std::string boardSizes)
 
 bool GetInput::validatePlaceCommand(std::string command)
 {
+    // TODO
+    return true;
 }
 
 bool GetInput::validateReplaceCommand(std::string command)
 {
+    // TODO
+    return true;
 }
 
 bool GetInput::validateBoardState(std::string boardState, int width, int height)

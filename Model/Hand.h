@@ -11,8 +11,8 @@ public:
     // Constructor(s)/Destructor
     Hand();
     Hand(int handsize);
-    // Hand(Hand &other);
-    //~Hand();
+    Hand(Hand &other);
+    ~Hand();
 
     // Methods
 

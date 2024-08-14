@@ -15,6 +15,9 @@ private:
     Width width;
 
 public:
+    // Default constructor
+    Board();
+
     // Declare the constructor
     Board(Height height, Width Width);
 

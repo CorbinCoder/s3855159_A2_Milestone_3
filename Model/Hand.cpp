@@ -13,22 +13,15 @@ Hand::Hand(int handsize)
 
 // Copy constructor
 Hand::Hand(Hand &other)
-
 {
-    this->handsize = handsize;
+    this->handsize = other.handsize;
+    this->tiles = other.tiles;
 }
-
-// Copy constructor
-// Hand::Hand(Hand &other)
-// {
-//     this->handsize = other.handsize;
-//     this->tiles = other.tiles;
-// }
 
 // Destructor
 Hand::~Hand()
 {
-    tiles.clear();
+    delete& tiles;
 }
 
 // Methods

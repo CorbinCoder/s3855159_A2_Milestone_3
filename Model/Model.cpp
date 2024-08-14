@@ -2,50 +2,54 @@
 
 Model::Model()
 {
-    // this->bag = Bag();
 }
 
 
 Model::Model(std::string player_1_name, std::string player_2_name)
 {
-    this->player1 = new Player(player_1_name);
-    this->player2 = new Player(player_2_name);
-    // this->bag = Bag();
-    // this->board = Board();
+    this->player_1 = new Player(player_1_name);
+    this->player_2 = new Player(player_2_name);
+    this->bag = new Bag(4);
+    this->bag->Shuffle();
+    this->board = new Board();
 }
 
-// Model::Model(std::string player_1_name, std::string player_2_name, Bag bag) : player_1(player_1_name, 6, 0, 1), player_2(player_2_name, 6, 0, 2)
-// {
-//     this->bag = bag;
-// Board board;
-// }
+Model::Model(std::string player_1_name, std::string player_2_name, Bag bag, Board board)
+{
+    this->player_1 = new Player(player_1_name);
+    this->player_2 = new Player(player_2_name);
+    this->bag = new Bag(bag);
+    this->board = new Board(board);
+}
 
-// Model::Model(Model &other) : player_1(other.player_1), player_2(other.player_1), bag(other.bag)
-// {
-// }
+Model::Model(Model &other)
+{
+    this->player_1 = other.player_1;
+    this->player_2 = other.player_2;
+    this->bag = other.bag;
+    this->board = other.board;
+}
 
 Model::~Model()
 {
-    delete this->player1;
-    delete this->player2;
-    // delete &this->player_1;
-    // delete &this->player_2;
-    // delete &this->bag;
+    delete &this->player_1;
+    this->player_1 = nullptr;
+    delete &this->player_2;
+    this->player_2 = nullptr;
+    delete &this->bag;
+    this->bag = nullptr;
+    delete &this->board;
+    this->board = nullptr;
 }
 
 // Methods
 void Model::drawHand(int player)
 {
     // draws 6 tiles from the bag
-    // Tile *tiles[6];
-    // int i = 0;
-    // while (i < 6)
-    // {
-    //     Tile *tile = getBag().Draw();
-    //     tiles[i] = tile;
-    // }
-
-    // this->getPlayer(player).drawHand(tiles);
+    for (int i = 0; i < this->getPlayer(player)->getHand()->getHandsize(); i++)
+    {
+        this->getPlayer(player)->getHand()->addTile(this->bag->Draw());
+    }
 }
 
 // Get/Set
@@ -53,48 +57,47 @@ Player *Model::getPlayer(int pos)
 {
     if (pos == 1)
     {
-        return player1;
+        return player_1;
     }
 
-    return player2;
+    return player_2;
 }
 
-// Fix this
-// Bag Model::getBag()
-// {
-//     return this->bag;
-// }
+Bag* Model::getBag()
+{
+    return this->bag;
+}
 
-// Board Model::getBoard()
-// {
-//     return this->board;
-// }
+Board* Model::getBoard()
+{
+    return this->board;
+}
 
 // replaces specifified
-// void Model::setPlayer(int pos, Player player)
-// {
-//     if (pos == 1)
-//     {
-//         this->player_1 = player;
-//     }
-//     else if (pos == 2)
-//     {
-//         this->player_2 = player;
-//     }
-//     else
-//     {
-//         std::cout << "Error - player position is invalid" << std::endl;
-//     }
-// }
+void Model::setPlayer(int pos, Player player)
+{
+    if (pos == 1)
+    {
+        this->player_1 = new Player(player);
+    }
+    else if (pos == 2)
+    {
+        this->player_2 = new Player(player);
+    }
+    else
+    {
+        std::cout << "Error - player position is invalid" << std::endl;
+    }
+}
 
 
 
-// void Model::setBag(Bag bag)
-// {
-//     this->bag = bag;
-// }
+void Model::setBag(Bag bag)
+{
+    this->bag = new Bag(bag);
+}
 
-// void Model::setBoard(Board board)
-// {
-//     this->board = board;
-// }
+void Model::setBoard(Board board)
+{
+    this->board = new Board(board);
+}

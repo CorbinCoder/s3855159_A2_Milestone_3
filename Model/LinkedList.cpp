@@ -10,7 +10,7 @@ LinkedList::LinkedList() : head(nullptr), tail(nullptr), length(0)
 // Destructor
 LinkedList::~LinkedList()
 {
-   // loop through all the nodes?
+   // loop through all the nodes
 
    while (head != tail)
    {

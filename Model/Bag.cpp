@@ -14,16 +14,16 @@ Bag::Bag(int numeach)
 }
 
 // Copy constructor
-// Bag::Bag(Bag &other)
-// {
-//     this->tiles = other.tiles;
-// }
+Bag::Bag(Bag &other)
+{
+    this->tiles = other.tiles;
+}
 
 // Destructor
-// Bag::~Bag()
-// {
-//     delete tiles;
-// }
+Bag::~Bag()
+{
+    delete[] &this->tiles;
+}
 
 // Create a new bag - set number of each tile
 void Bag::New(int numeach)
@@ -67,7 +67,7 @@ void Bag::Shuffle()
 }
 
 // Draw a tile from the bag - draws from the top
-Tile *Bag::Draw()
+Tile* Bag::Draw()
 {
     Tile *temp = this->tiles.getFront();
 
